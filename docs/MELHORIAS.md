@@ -4,7 +4,7 @@ Este documento usa **somente evidências de treino e validação** (o teste foi 
 
 ## 1. Diagnóstico
 
-O guia aprendeu o que o professor ensinou: na validação, ele distingue contextos seguros dentro da mesma camada (AUC 0,76) e, no proxy offline, escolhe camadas com menos KL isolado que o STATIC em 3 de 4 orçamentos. Na decodificação real, porém, **nenhuma política atinge ΔNLL ≤ 5%**, nem mesmo com 3 MLPs omitidos (o STATIC fica em +7%).
+O guia aprendeu o que o professor ensinou: na validação, ele distingue contextos seguros dentro da mesma camada (AUC 0,72 no guia selecionado; até 0,77 em outras variantes) e, no proxy offline, escolhe camadas com menos KL isolado que o STATIC em 3 de 4 orçamentos. Na decodificação real, porém, **nenhuma política atinge ΔNLL ≤ 5%**, nem mesmo com 3 MLPs omitidos (o STATIC fica em +7%).
 
 O descolamento tem duas causas, medidas em `results/diag_interaction_val.json`:
 

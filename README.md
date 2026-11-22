@@ -4,7 +4,7 @@
 
 **Estado (v0.1): resultado negativo, medido e reproduzível.** No SmolLM2-135M em Apple Silicon (MPS), o guia aprende sinal real, mas **nenhuma política atingiu o critério de sucesso** definido antes do experimento. Os motivos estão diagnosticados, e as próximas hipóteses estão em [docs/MELHORIAS.md](docs/MELHORIAS.md). Críticas e propostas são muito bem-vindas: veja [Como participar](#como-participar).
 
-*English summary:* We route (skip) whole MLP blocks of a frozen dense LLM during decoding, using a tiny learned probe (576→16, ~11k params) over each layer's MLP input. The probe learns real context signal (within-layer AUC 0.76), but in real autoregressive decoding with joint skips no policy (learned, static, random) keeps NLL increase ≤5%, and speed gains are capped at ~13% because 135M-parameter decoding on PyTorch/MPS is CPU-dispatch-bound. Root causes measured: non-additive layer interactions (up to ~3×) and KV-cache error accumulation (~2×). All code, raw results and the pre-registered protocol are here.
+*English summary:* We route (skip) whole MLP blocks of a frozen dense LLM during decoding, using a tiny learned probe (576→16, ~11k params) over each layer's MLP input. The probe learns real context signal (within-layer AUC 0.72 for the selected probe, up to 0.77 for other variants), but in real autoregressive decoding with joint skips no policy (learned, static, random) keeps NLL increase ≤5%, and speed gains are capped at ~13% because 135M-parameter decoding on PyTorch/MPS is CPU-dispatch-bound. Root causes measured: non-additive layer interactions (up to ~3×) and KV-cache error accumulation (~2×). All code, raw results and the pre-registered protocol are here.
 
 ---
 
@@ -26,7 +26,7 @@ Critério definido **antes** de rodar (especificação, seção 6): ≥20% dos M
 ### O que aprendemos
 
 1. **O mecanismo funciona, e funciona exatamente.** Com 100% dos MLPs, o modelo instrumentado é bit a bit igual ao original, e o skip faz *zero* chamadas ao MLP (testado).
-2. **O guia aprende contexto, não só o índice da camada.** Dentro da mesma camada, ele separa contextos seguros de inseguros com AUC 0,76 (validação).
+2. **O guia aprende contexto, não só o índice da camada.** Dentro da mesma camada, ele separa contextos seguros de inseguros com AUC 0,72 (validação, guia selecionado; outras variantes chegaram a 0,77).
 3. **Mas o rótulo do professor não mede o dano real.** Ele rotula *uma* camada, *um* token, com prefixo intacto. No decode real:
    - **interação:** pular camadas vizinhas custa até **~2,9×** a soma dos custos isolados (por isso o STATIC, que pula o bloco 11–18, fica pior que o RANDOM a partir de 8 camadas);
    - **acumulação:** o erro entra no KV cache e **~dobra** ao longo dos tokens ([diagnóstico](results/diag_interaction_val.json)).
