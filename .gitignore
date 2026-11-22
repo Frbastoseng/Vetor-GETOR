@@ -13,3 +13,7 @@ data/*.pt
 # results/ e versionado de proposito (JSON/CSV/PNG pequenos) para analise publica
 .claude/
 data/v2_articles.json
+
+# documentos internos (mantidos so localmente)
+ESPECIFICACAO_TECNICA.md
+PROMPT_PARA_CLAUDE.md

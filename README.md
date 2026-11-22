@@ -69,7 +69,7 @@ Sem MPS, tudo roda em CPU (`device: cpu` em `configs/default.yaml`, ou `VETOR_DE
 - **Políticas:** FULL, RANDOM, STATIC (ranking do treino), ORACLE-DIAG (limite não implementável), GUIDED-S (decide no prefill) e GUIDED-D{1,4,8,16} (reavalia a cada K tokens com z do token anterior: causal). Todas comparadas com **o mesmo número de MLPs omitidos**.
 - **Medição de tempo:** prefill e decode separados, sincronização só nas bordas, ordem rotacionada, speedup pareado com IC95 bootstrap.
 
-Protocolo completo: [ESPECIFICACAO_TECNICA.md](ESPECIFICACAO_TECNICA.md). Instruções originais de implementação: [PROMPT_PARA_CLAUDE.md](PROMPT_PARA_CLAUDE.md).
+O protocolo da v0.2, pré-registrado antes dos experimentos, está em [ESPECIFICACAO_V0.2.md](ESPECIFICACAO_V0.2.md). Os critérios da v0.1 estão resumidos acima.
 
 ## Estrutura
 
