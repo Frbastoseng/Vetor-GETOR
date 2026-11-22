@@ -1,0 +1,27 @@
+name: Bug / reprodução
+description: Erro ao rodar, teste falhando ou números divergentes
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: comando
+    attributes:
+      label: Comando executado
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: saida
+    attributes:
+      label: Saída / erro / números obtidos
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: ambiente
+    attributes:
+      label: Ambiente
+      description: Cole results/00_sanity.json (SO, chip, torch, transformers, device).
+      render: json
+    validations:
+      required: true

@@ -1,0 +1,38 @@
+name: Questionamento metodológico
+description: Falha de método, vazamento, métrica enganosa, comparação injusta
+title: "[método] "
+labels: ["metodologia"]
+body:
+  - type: markdown
+    attributes:
+      value: Críticas ao método são a contribuição mais valiosa deste projeto. Obrigado!
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área
+      options:
+        - Dados / split / vazamento
+        - Rótulo do professor (KL, ΔNLL, limiares)
+        - Treino ou seleção do guia
+        - Comparação entre políticas (RANDOM / STATIC / ORACLE)
+        - Medição de tempo / benchmark
+        - Métricas de qualidade
+        - Interpretação / conclusões
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual é o problema?
+      description: Aponte arquivo/linha ou resultado em results/ quando possível.
+    validations:
+      required: true
+  - type: textarea
+    id: impacto
+    attributes:
+      label: Como isso pode distorcer os resultados?
+  - type: textarea
+    id: teste
+    attributes:
+      label: Que teste ou experimento confirmaria/refutaria?

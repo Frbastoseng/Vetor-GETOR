@@ -1,0 +1,30 @@
+name: Proposta de experimento
+description: Nova ideia, variação do guia, outro modelo/backend
+title: "[experimento] "
+labels: ["experimento"]
+body:
+  - type: textarea
+    id: hipotese
+    attributes:
+      label: Hipótese
+      description: O que você espera que aconteça e por quê?
+    validations:
+      required: true
+  - type: textarea
+    id: protocolo
+    attributes:
+      label: Protocolo
+      description: O que mudar, como medir, qual controle (RANDOM/STATIC no mesmo orçamento).
+    validations:
+      required: true
+  - type: textarea
+    id: criterio
+    attributes:
+      label: Critério de sucesso/fracasso definido ANTES de rodar
+    validations:
+      required: true
+  - type: dropdown
+    id: custo
+    attributes:
+      label: Custo estimado
+      options: ["minutos", "horas", "dias / GPU dedicada"]
