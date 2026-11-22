@@ -1,0 +1,23 @@
+{
+  "full": {
+    "ms_per_token": 3.6048307188139006,
+    "cpu_enqueue_ms_per_token": 3.537682281148591,
+    "ms_per_token_no_throttle": 6.843997406122071,
+    "cpu_enqueue_ms_no_throttle": 3.5680514067735203
+  },
+  "skip_26_eligible": {
+    "ms_per_token": 3.1245188749835506,
+    "cpu_enqueue_ms_per_token": 3.066740921667588,
+    "ms_per_token_no_throttle": 5.560341797036017,
+    "cpu_enqueue_ms_no_throttle": 3.107386062083606
+  },
+  "skip_all_30_diag": {
+    "ms_per_token": 3.031668624998929,
+    "cpu_enqueue_ms_per_token": 2.979755859314537,
+    "ms_per_token_no_throttle": 5.280263015720266,
+    "cpu_enqueue_ms_no_throttle": 2.9532825303704158
+  },
+  "isolated_mlp_us_per_call": 34.59645500697661,
+  "isolated_rmsnorm_us_per_call": 22.505209999508224,
+  "mlp_saving_us_per_layer_measured": 18.473532455013462
+}

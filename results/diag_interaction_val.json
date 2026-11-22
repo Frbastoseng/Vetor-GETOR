@@ -1,0 +1,191 @@
+{
+  "n_prefixes": 120,
+  "rows": [
+    {
+      "policy": "STATIC@k3",
+      "layers": [
+        12,
+        13,
+        14
+      ],
+      "additive_kl_mean": 0.11195755749940872,
+      "joint_kl_mean": 0.1141309067606926,
+      "joint_over_additive": 1.0194122791290283,
+      "decode_accumulated_kl_mean": 0.25944283604621887
+    },
+    {
+      "policy": "RANDOM@k3",
+      "layers": [
+        15,
+        17,
+        22
+      ],
+      "additive_kl_mean": 0.2624543607234955,
+      "joint_kl_mean": 0.2859240770339966,
+      "joint_over_additive": 1.0894240140914917,
+      "decode_accumulated_kl_mean": 0.3943065404891968
+    },
+    {
+      "policy": "STATIC-SPREAD@k3",
+      "layers": [
+        12,
+        14,
+        16
+      ],
+      "additive_kl_mean": 0.1134454533457756,
+      "joint_kl_mean": 0.12141739577054977,
+      "joint_over_additive": 1.0702711343765259,
+      "decode_accumulated_kl_mean": null
+    },
+    {
+      "policy": "STATIC@k5",
+      "layers": [
+        12,
+        13,
+        14,
+        16,
+        17
+      ],
+      "additive_kl_mean": 0.18738937377929688,
+      "joint_kl_mean": 0.27857571840286255,
+      "joint_over_additive": 1.4866142272949219,
+      "decode_accumulated_kl_mean": 0.5287947058677673
+    },
+    {
+      "policy": "RANDOM@k5",
+      "layers": [
+        2,
+        3,
+        6,
+        23,
+        25
+      ],
+      "additive_kl_mean": 0.5946918725967407,
+      "joint_kl_mean": 0.648077666759491,
+      "joint_over_additive": 1.0897705554962158,
+      "decode_accumulated_kl_mean": 0.7153499722480774
+    },
+    {
+      "policy": "STATIC-SPREAD@k5",
+      "layers": [
+        5,
+        11,
+        13,
+        15,
+        17
+      ],
+      "additive_kl_mean": 0.20098422467708588,
+      "joint_kl_mean": 0.2513537108898163,
+      "joint_over_additive": 1.2506141662597656,
+      "decode_accumulated_kl_mean": null
+    },
+    {
+      "policy": "STATIC@k8",
+      "layers": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "additive_kl_mean": 0.3190478980541229,
+      "joint_kl_mean": 0.9285620450973511,
+      "joint_over_additive": 2.9104158878326416,
+      "decode_accumulated_kl_mean": 2.3995180130004883
+    },
+    {
+      "policy": "RANDOM@k8",
+      "layers": [
+        8,
+        13,
+        14,
+        15,
+        16,
+        20,
+        23,
+        24
+      ],
+      "additive_kl_mean": 0.7602592706680298,
+      "joint_kl_mean": 1.0526386499404907,
+      "joint_over_additive": 1.3845784664154053,
+      "decode_accumulated_kl_mean": 1.367832064628601
+    },
+    {
+      "policy": "STATIC-SPREAD@k8",
+      "layers": [
+        2,
+        5,
+        7,
+        9,
+        12,
+        14,
+        16,
+        18
+      ],
+      "additive_kl_mean": 0.41664454340934753,
+      "joint_kl_mean": 0.7091143727302551,
+      "joint_over_additive": 1.7019648551940918,
+      "decode_accumulated_kl_mean": null
+    },
+    {
+      "policy": "STATIC@k10",
+      "layers": [
+        5,
+        9,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "additive_kl_mean": 0.43555697798728943,
+      "joint_kl_mean": 1.2391166687011719,
+      "joint_over_additive": 2.8449013233184814,
+      "decode_accumulated_kl_mean": 3.6130971908569336
+    },
+    {
+      "policy": "RANDOM@k10",
+      "layers": [
+        2,
+        3,
+        5,
+        9,
+        14,
+        17,
+        20,
+        24,
+        25,
+        27
+      ],
+      "additive_kl_mean": 0.9643065929412842,
+      "joint_kl_mean": 1.3620835542678833,
+      "joint_over_additive": 1.4125005006790161,
+      "decode_accumulated_kl_mean": 1.9492484331130981
+    },
+    {
+      "policy": "STATIC-SPREAD@k10",
+      "layers": [
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18,
+        20
+      ],
+      "additive_kl_mean": 0.6510728597640991,
+      "joint_kl_mean": 1.1370928287506104,
+      "joint_over_additive": 1.7464909553527832,
+      "decode_accumulated_kl_mean": null
+    }
+  ]
+}

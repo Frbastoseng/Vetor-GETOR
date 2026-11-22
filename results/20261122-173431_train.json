@@ -1,0 +1,487 @@
+{
+  "run_id": "20261122-173431_train",
+  "static_rank_train": [
+    14,
+    16,
+    13,
+    17,
+    15,
+    12,
+    11,
+    18,
+    5,
+    9,
+    19,
+    6,
+    3,
+    8,
+    4,
+    7,
+    2,
+    21,
+    1,
+    10,
+    20,
+    26,
+    25,
+    22,
+    27,
+    24,
+    23,
+    28,
+    29,
+    0
+  ],
+  "ks": [
+    0,
+    3,
+    5,
+    8,
+    10
+  ],
+  "candidates": [
+    {
+      "target": "regress",
+      "seed": 0,
+      "n_params": 10894,
+      "best_val_loss": 0.5235134959220886,
+      "val": {
+        "auc_safe": 0.7942603773584905,
+        "spearman_within_sample_mean": 0.5446039886039885,
+        "auc_safe_within_layer_mean": 0.752401823764697,
+        "k3": {
+          "guided_sumKL": 0.11889787018299103,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.6666666865348816
+        },
+        "k5": {
+          "guided_sumKL": 0.19047249853610992,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.6583333611488342
+        },
+        "k8": {
+          "guided_sumKL": 0.32600441575050354,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.6666666865348816
+        },
+        "k10": {
+          "guided_sumKL": 0.4279516339302063,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.6333333253860474
+        }
+      },
+      "train": {
+        "auc_safe": 0.8668050077982538,
+        "spearman_within_sample_mean": 0.6794821353509878,
+        "auc_safe_within_layer_mean": 0.8339431067620826,
+        "k3": {
+          "guided_sumKL": 0.07011482864618301,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.7795081734657288
+        },
+        "k5": {
+          "guided_sumKL": 0.12890416383743286,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.7885245680809021
+        },
+        "k8": {
+          "guided_sumKL": 0.22759585082530975,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.800000011920929
+        },
+        "k10": {
+          "guided_sumKL": 0.31350916624069214,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.8188524842262268
+        }
+      },
+      "val_criterion_mean_sumKL": 0.2658316045999527
+    },
+    {
+      "target": "regress",
+      "seed": 1,
+      "n_params": 10894,
+      "best_val_loss": 0.531376838684082,
+      "val": {
+        "auc_safe": 0.790595283018868,
+        "spearman_within_sample_mean": 0.5483703703703704,
+        "auc_safe_within_layer_mean": 0.746106223832239,
+        "k3": {
+          "guided_sumKL": 0.1072644367814064,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.6666666865348816
+        },
+        "k5": {
+          "guided_sumKL": 0.2071641981601715,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.675000011920929
+        },
+        "k8": {
+          "guided_sumKL": 0.3610790967941284,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.6499999761581421
+        },
+        "k10": {
+          "guided_sumKL": 0.481850802898407,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.6583333611488342
+        }
+      },
+      "train": {
+        "auc_safe": 0.8577467232112628,
+        "spearman_within_sample_mean": 0.6626257531175563,
+        "auc_safe_within_layer_mean": 0.8224883317192939,
+        "k3": {
+          "guided_sumKL": 0.08385330438613892,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.7549180388450623
+        },
+        "k5": {
+          "guided_sumKL": 0.14481006562709808,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.7590163946151733
+        },
+        "k8": {
+          "guided_sumKL": 0.2591891586780548,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.7811475396156311
+        },
+        "k10": {
+          "guided_sumKL": 0.34605246782302856,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.8032786846160889
+        }
+      },
+      "val_criterion_mean_sumKL": 0.28933963365852833
+    },
+    {
+      "target": "regress",
+      "seed": 2,
+      "n_params": 10894,
+      "best_val_loss": 0.5245595574378967,
+      "val": {
+        "auc_safe": 0.7831372641509434,
+        "spearman_within_sample_mean": 0.5521082621082621,
+        "auc_safe_within_layer_mean": 0.7346586170451026,
+        "k3": {
+          "guided_sumKL": 0.1246529296040535,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.6416666507720947
+        },
+        "k5": {
+          "guided_sumKL": 0.19841031730175018,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.6416666507720947
+        },
+        "k8": {
+          "guided_sumKL": 0.3058943748474121,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.6666666865348816
+        },
+        "k10": {
+          "guided_sumKL": 0.41141775250434875,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.6166666746139526
+        }
+      },
+      "train": {
+        "auc_safe": 0.873978530165444,
+        "spearman_within_sample_mean": 0.6904604175423846,
+        "auc_safe_within_layer_mean": 0.8429019291175273,
+        "k3": {
+          "guided_sumKL": 0.06928956508636475,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.7950819730758667
+        },
+        "k5": {
+          "guided_sumKL": 0.12090802937746048,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.8032786846160889
+        },
+        "k8": {
+          "guided_sumKL": 0.22241000831127167,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.8204917907714844
+        },
+        "k10": {
+          "guided_sumKL": 0.31435975432395935,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.8377048969268799
+        }
+      },
+      "val_criterion_mean_sumKL": 0.26009384356439114
+    },
+    {
+      "target": "classify",
+      "seed": 0,
+      "n_params": 10894,
+      "best_val_loss": 0.7374840378761292,
+      "val": {
+        "auc_safe": 0.7935764150943396,
+        "spearman_within_sample_mean": 0.4935726495726495,
+        "auc_safe_within_layer_mean": 0.7387029831301342,
+        "k3": {
+          "guided_sumKL": 0.1596103459596634,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.6499999761581421
+        },
+        "k5": {
+          "guided_sumKL": 0.254407674074173,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.6416666507720947
+        },
+        "k8": {
+          "guided_sumKL": 0.49702003598213196,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.5916666388511658
+        },
+        "k10": {
+          "guided_sumKL": 0.6371808648109436,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.5666666626930237
+        }
+      },
+      "train": {
+        "auc_safe": 0.8344848439909829,
+        "spearman_within_sample_mean": 0.555183970856102,
+        "auc_safe_within_layer_mean": 0.7980187641867437,
+        "k3": {
+          "guided_sumKL": 0.1449689269065857,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.6795082092285156
+        },
+        "k5": {
+          "guided_sumKL": 0.2395322024822235,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.6803278923034668
+        },
+        "k8": {
+          "guided_sumKL": 0.40201589465141296,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.6770491600036621
+        },
+        "k10": {
+          "guided_sumKL": 0.5488898754119873,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.6770491600036621
+        }
+      },
+      "val_criterion_mean_sumKL": 0.387054730206728
+    },
+    {
+      "target": "classify",
+      "seed": 1,
+      "n_params": 10894,
+      "best_val_loss": 0.7322868704795837,
+      "val": {
+        "auc_safe": 0.7954999999999999,
+        "spearman_within_sample_mean": 0.4906267806267806,
+        "auc_safe_within_layer_mean": 0.7400276549817698,
+        "k3": {
+          "guided_sumKL": 0.1483798772096634,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.625
+        },
+        "k5": {
+          "guided_sumKL": 0.2510726749897003,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.6416666507720947
+        },
+        "k8": {
+          "guided_sumKL": 0.4807076156139374,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.625
+        },
+        "k10": {
+          "guided_sumKL": 0.6232464909553528,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.6000000238418579
+        }
+      },
+      "train": {
+        "auc_safe": 0.836010499369934,
+        "spearman_within_sample_mean": 0.5522376348605856,
+        "auc_safe_within_layer_mean": 0.8002256138288169,
+        "k3": {
+          "guided_sumKL": 0.15166303515434265,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.6745901703834534
+        },
+        "k5": {
+          "guided_sumKL": 0.25399649143218994,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.6819671988487244
+        },
+        "k8": {
+          "guided_sumKL": 0.4255644381046295,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.6868852376937866
+        },
+        "k10": {
+          "guided_sumKL": 0.5603175759315491,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.6672131419181824
+        }
+      },
+      "val_criterion_mean_sumKL": 0.37585166469216347
+    },
+    {
+      "target": "classify",
+      "seed": 2,
+      "n_params": 10894,
+      "best_val_loss": 0.7386144399642944,
+      "val": {
+        "auc_safe": 0.7924768867924528,
+        "spearman_within_sample_mean": 0.4922393162393162,
+        "auc_safe_within_layer_mean": 0.7384090622791446,
+        "k3": {
+          "guided_sumKL": 0.14444051682949066,
+          "static_sumKL": 0.10040023922920227,
+          "random_sumKL": 0.30882248282432556,
+          "oracle_sumKL": 0.02531517669558525,
+          "guided_beats_static_frac": 0.6499999761581421
+        },
+        "k5": {
+          "guided_sumKL": 0.24121011793613434,
+          "static_sumKL": 0.16948717832565308,
+          "random_sumKL": 0.4561316668987274,
+          "oracle_sumKL": 0.05339277908205986,
+          "guided_beats_static_frac": 0.6333333253860474
+        },
+        "k8": {
+          "guided_sumKL": 0.4665735363960266,
+          "static_sumKL": 0.29005351662635803,
+          "random_sumKL": 0.6406890749931335,
+          "oracle_sumKL": 0.11128024756908417,
+          "guided_beats_static_frac": 0.574999988079071
+        },
+        "k10": {
+          "guided_sumKL": 0.6349184513092041,
+          "static_sumKL": 0.3898480236530304,
+          "random_sumKL": 0.8198238015174866,
+          "oracle_sumKL": 0.1625681221485138,
+          "guided_beats_static_frac": 0.5416666865348816
+        }
+      },
+      "train": {
+        "auc_safe": 0.8372063695192318,
+        "spearman_within_sample_mean": 0.5552041474008687,
+        "auc_safe_within_layer_mean": 0.8024234389776871,
+        "k3": {
+          "guided_sumKL": 0.15250301361083984,
+          "static_sumKL": 0.09382474422454834,
+          "random_sumKL": 0.24848820269107819,
+          "oracle_sumKL": 0.023644814267754555,
+          "guided_beats_static_frac": 0.6754098534584045
+        },
+        "k5": {
+          "guided_sumKL": 0.25052550435066223,
+          "static_sumKL": 0.16340480744838715,
+          "random_sumKL": 0.39421316981315613,
+          "oracle_sumKL": 0.04962451383471489,
+          "guided_beats_static_frac": 0.6877049207687378
+        },
+        "k8": {
+          "guided_sumKL": 0.4148303270339966,
+          "static_sumKL": 0.29392701387405396,
+          "random_sumKL": 0.6618326902389526,
+          "oracle_sumKL": 0.10621889680624008,
+          "guided_beats_static_frac": 0.6745901703834534
+        },
+        "k10": {
+          "guided_sumKL": 0.5663637518882751,
+          "static_sumKL": 0.41363105177879333,
+          "random_sumKL": 0.8220075964927673,
+          "oracle_sumKL": 0.15788576006889343,
+          "guided_beats_static_frac": 0.6631147265434265
+        }
+      },
+      "val_criterion_mean_sumKL": 0.37178565561771393
+    }
+  ],
+  "selected": {
+    "target": "regress",
+    "seed": 2,
+    "criterion": 0.26009384356439114
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-173621_teacher",
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "revision": "12fd25f77366fa6b3b4b768ec3050bf629380bac",
+  "labels": {
+    "kl_max": 0.02,
+    "delta_nll_max": 0.05
+  },
+  "teacher_cfg": {
+    "prefixes_per_doc": 2,
+    "prefix_len": [
+      32,
+      128
+    ]
+  },
+  "splits": {
+    "train": {
+      "n_samples": 3622,
+      "n_docs": 610,
+      "seconds": 362.7437880039215,
+      "data_hash": "a4980eca9bd9a525532d01c657ee57129ee39458320bf6786725f033d65d17b2",
+      "safe_rate": 0.287548303604126
+    },
+    "val": {
+      "n_samples": 240,
+      "n_docs": 60,
+      "seconds": 23.919068336486816,
+      "data_hash": "d79c78e787d952f0c83a6139686fa0b6efa53bef2aa5ef9c12628f44dc97fb1d",
+      "safe_rate": 0.29819443821907043
+    },
+    "test": {
+      "n_samples": 240,
+      "n_docs": 60,
+      "seconds": 24.005584239959717,
+      "data_hash": "fb4c63db4be2c6e6798e2a552602d0e613e35a89628ecc3bd02685fa21ddc2d6",
+      "safe_rate": 0.3295833468437195
+    }
+  },
+  "layers_csv": "20261122-173621_teacher_layers.csv"
+}

@@ -1,0 +1,198 @@
+{
+  "model": "HuggingFaceTB/SmolLM2-135M-Instruct",
+  "device": "mps",
+  "results": [
+    {
+      "example": 0,
+      "layer": 0,
+      "kl_nats": 1.525464415550232,
+      "delta_nll_nats": 1.216502070426941,
+      "safe_initial": false,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 0,
+      "layer": 1,
+      "kl_nats": 0.00457114540040493,
+      "delta_nll_nats": -0.0023980140686035156,
+      "safe_initial": true,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 0,
+      "layer": 2,
+      "kl_nats": 0.003422262379899621,
+      "delta_nll_nats": 0.02257215976715088,
+      "safe_initial": true,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 0,
+      "layer": 3,
+      "kl_nats": 0.004203233402222395,
+      "delta_nll_nats": 0.0011186599731445312,
+      "safe_initial": true,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 0,
+      "layer": 4,
+      "kl_nats": 0.001671135425567627,
+      "delta_nll_nats": -0.014802098274230957,
+      "safe_initial": true,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 0,
+      "layer": 5,
+      "kl_nats": 0.0033084473107010126,
+      "delta_nll_nats": 0.013905525207519531,
+      "safe_initial": true,
+      "prefix_tokens": 13
+    },
+    {
+      "example": 1,
+      "layer": 0,
+      "kl_nats": 2.700162887573242,
+      "delta_nll_nats": -0.2731935977935791,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 1,
+      "layer": 1,
+      "kl_nats": 0.035871006548404694,
+      "delta_nll_nats": 0.7628498077392578,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 1,
+      "layer": 2,
+      "kl_nats": 0.1317521333694458,
+      "delta_nll_nats": 1.066420555114746,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 1,
+      "layer": 3,
+      "kl_nats": 0.021137462928891182,
+      "delta_nll_nats": -0.32481837272644043,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 1,
+      "layer": 4,
+      "kl_nats": 0.061071328818798065,
+      "delta_nll_nats": 1.0971412658691406,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 1,
+      "layer": 5,
+      "kl_nats": 0.03651871159672737,
+      "delta_nll_nats": 0.17413854598999023,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 0,
+      "kl_nats": 1.9116712808609009,
+      "delta_nll_nats": 0.7022526264190674,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 1,
+      "kl_nats": 0.008834133855998516,
+      "delta_nll_nats": -0.12868976593017578,
+      "safe_initial": true,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 2,
+      "kl_nats": 0.021354079246520996,
+      "delta_nll_nats": -0.023074865341186523,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 3,
+      "kl_nats": 0.016237810254096985,
+      "delta_nll_nats": -0.12701201438903809,
+      "safe_initial": true,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 4,
+      "kl_nats": 0.023093711584806442,
+      "delta_nll_nats": 0.12473511695861816,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 2,
+      "layer": 5,
+      "kl_nats": 0.09925577789545059,
+      "delta_nll_nats": 0.0836019515991211,
+      "safe_initial": false,
+      "prefix_tokens": 8
+    },
+    {
+      "example": 3,
+      "layer": 0,
+      "kl_nats": 3.808151960372925,
+      "delta_nll_nats": 4.202311038970947,
+      "safe_initial": false,
+      "prefix_tokens": 9
+    },
+    {
+      "example": 3,
+      "layer": 1,
+      "kl_nats": 0.006644529290497303,
+      "delta_nll_nats": 0.03141498565673828,
+      "safe_initial": true,
+      "prefix_tokens": 9
+    },
+    {
+      "example": 3,
+      "layer": 2,
+      "kl_nats": 0.0555497445166111,
+      "delta_nll_nats": 0.09210729598999023,
+      "safe_initial": false,
+      "prefix_tokens": 9
+    },
+    {
+      "example": 3,
+      "layer": 3,
+      "kl_nats": 0.027105096727609634,
+      "delta_nll_nats": 0.1724696159362793,
+      "safe_initial": false,
+      "prefix_tokens": 9
+    },
+    {
+      "example": 3,
+      "layer": 4,
+      "kl_nats": 0.029017014428973198,
+      "delta_nll_nats": 0.013368010520935059,
+      "safe_initial": false,
+      "prefix_tokens": 9
+    },
+    {
+      "example": 3,
+      "layer": 5,
+      "kl_nats": 0.016984913498163223,
+      "delta_nll_nats": -0.027565717697143555,
+      "safe_initial": true,
+      "prefix_tokens": 9
+    }
+  ]
+}
