@@ -57,7 +57,7 @@ def test_dynamic_decision_uses_previous_token_only(patched, prompt, device):
     assert toks.shape == (n,)
 
 
-def test_splits_are_disjoint_by_document(cfg, lm):
+def test_splits_are_disjoint_by_document(cfg):
     from vetor.collect import load_articles
     ids = {s: {d["title"] for d in load_articles(cfg, s)} for s in ("train", "val", "test")}
     assert not (ids["train"] & ids["val"])

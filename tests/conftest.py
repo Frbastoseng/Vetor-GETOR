@@ -1,3 +1,5 @@
+import os
+
 import pytest
 import torch
 from torch import nn
@@ -36,7 +38,8 @@ def cfg():
 
 @pytest.fixture(scope="session")
 def device(cfg):
-    return pick_device(cfg["device"])
+    # VETOR_DEVICE=cpu forca CPU (CI no Linux, ou para comparar com MPS)
+    return pick_device(os.environ.get("VETOR_DEVICE", cfg["device"]))
 
 
 @pytest.fixture(scope="session")
