@@ -12,3 +12,7 @@ data/*.pt
 *.egg-info/
 # results/ e versionado de proposito (JSON/CSV/PNG pequenos) para analise publica
 .claude/
+
+# documentos internos (mantidos so localmente)
+ESPECIFICACAO_TECNICA.md
+PROMPT_PARA_CLAUDE.md

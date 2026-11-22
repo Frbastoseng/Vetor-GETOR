@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-if [ ! -f "ESPECIFICACAO_TECNICA.md" ]; then
+if [ ! -f "pyproject.toml" ]; then
   echo "Execute este script a partir da raiz do projeto VETOR."
   exit 1
 fi
