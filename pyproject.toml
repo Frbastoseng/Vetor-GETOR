@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vetor"
+version = "0.1.0"
+description = "VETOR: roteamento de blocos MLP guiado por vetor em Transformers densos (experimento)"
+requires-python = ">=3.11"
+dependencies = [
+  "torch>=2.4",
+  "transformers>=5.0",
+  "datasets",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "safetensors",
+  "pyyaml",
+  "matplotlib",
+  "tqdm",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["model: testes que carregam o SmolLM2 real (lentos)"]

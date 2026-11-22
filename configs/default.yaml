@@ -1,0 +1,43 @@
+# Configuracao padrao do experimento VETOR.
+model:
+  id: HuggingFaceTB/SmolLM2-135M-Instruct
+  revision: 12fd25f77366fa6b3b4b768ec3050bf629380bac
+  dtype: float32
+device: auto            # auto | mps | cpu
+seed: 1234
+
+routing:
+  protected_first: 2
+  protected_last: 2
+  budgets: [0.0, 0.1, 0.2, 0.3, 0.4]   # fracao dos MLPs elegiveis omitidos por token
+
+data:
+  dataset: Salesforce/wikitext
+  config: wikitext-2-raw-v1             # CC BY-SA 3.0 (Wikipedia)
+  # splits oficiais do WikiText-2 (ja separados por ARTIGO); nenhum prefixo cruza splits
+  min_doc_tokens: 200
+  teacher:
+    prefixes_per_doc: {train: 6, val: 4, test: 4}
+    prefix_len: [32, 128]
+  eval:
+    prompt_len: 64
+    continuation_len: 64
+    max_docs: 100
+
+labels:
+  kl_max: 0.02          # nats, hipotese de trabalho; ajustavel so na validacao
+  delta_nll_max: 0.05
+
+guide:
+  dim: 16
+  epochs: 60
+  lr: 3.0e-3
+  weight_decay: 1.0e-2
+  batch_size: 2048
+  target: regress       # regress (log KL) | classify (safe)
+
+benchmark:
+  prompt_len: 64
+  decode_tokens: 64
+  warmup: 3
+  repeats: 15

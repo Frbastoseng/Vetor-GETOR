@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+*.safetensors
+*.bin
+models/
+data/*.jsonl
+.env
+data/*.pt
+*.egg-info/
+# results/ e versionado de proposito (JSON/CSV/PNG pequenos) para analise publica
+.claude/
