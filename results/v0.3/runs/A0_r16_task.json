@@ -1,0 +1,86 @@
+{
+  "args": {
+    "arch": "A0",
+    "layers": "spaced8",
+    "rank": 16,
+    "replace": 0,
+    "task_weight": 1.0,
+    "alpha": 0.0,
+    "gamma": 0.0,
+    "lr": 0.005,
+    "epochs": 1.0,
+    "max_tokens": 8192,
+    "eval_every": 150,
+    "max_train": null,
+    "seed": 0,
+    "tag": "A0_r16_task"
+  },
+  "n_params": 147456,
+  "layers": [
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    24
+  ],
+  "replaced": [],
+  "history": [
+    {
+      "step": 0,
+      "val_task": 1.8562116512545832,
+      "val_distill": 0.9931962975749263
+    },
+    {
+      "step": 150,
+      "val_task": 1.738261787979691,
+      "val_distill": 0.9534883907547703,
+      "gates": {},
+      "elapsed_s": 130.84572792053223
+    },
+    {
+      "step": 300,
+      "val_task": 1.6999363413563482,
+      "val_distill": 0.9363060516339762,
+      "gates": {},
+      "elapsed_s": 313.33805799484253
+    },
+    {
+      "step": 450,
+      "val_task": 1.6850353987128646,
+      "val_distill": 0.9285579290654924,
+      "gates": {},
+      "elapsed_s": 488.4336287975311
+    },
+    {
+      "step": 600,
+      "val_task": 1.678225415724295,
+      "val_distill": 0.926910643224363,
+      "gates": {},
+      "elapsed_s": 660.2843079566956
+    },
+    {
+      "step": 657,
+      "val_task": 1.678063761304926,
+      "val_distill": 0.9268709619839987,
+      "gates": {},
+      "elapsed_s": 732.7762529850006
+    }
+  ],
+  "best_val": 2.604934723288925,
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "train_seconds": 732.9051609039307
+}
