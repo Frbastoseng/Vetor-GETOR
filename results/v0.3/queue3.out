@@ -1,0 +1,6 @@
+[A_r8_task_g1] params treinaveis=84248  passos=657  val inicial={'task': 1.8562116512545832, 'distill': 0.9931962975749263}
+[A_r8_task_g1] macro DEV = 36.75 vs FULL 36.26  diff = +0.49 p.p. IC95 [-0.04, +1.02]
+[B0_r8_rep4_task_g1] params treinaveis=64512  passos=657  val inicial={'task': 2.340533252115603, 'distill': 1.4654063803178292}
+[B0_r8_rep4_task_g1] macro DEV = 33.09 vs FULL 36.26  diff = -3.17 p.p. IC95 [-4.03, -2.35]
+[B_r8_rep4_task_g1] params treinaveis=75015  passos=657  val inicial={'task': 2.340533252115603, 'distill': 1.4654063803178292}
+[B_r8_rep4_task_g1] macro DEV = 33.20 vs FULL 36.26  diff = -3.06 p.p. IC95 [-3.90, -2.25]

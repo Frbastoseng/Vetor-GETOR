@@ -40,11 +40,21 @@ class Guide(nn.Module):
         self.e = nn.Parameter(torch.zeros(len(layers), dim))
         self.w = nn.Parameter(torch.zeros(dim))
         self.b = nn.Parameter(torch.full((len(layers),), gate_bias))
+        # 2o portao (Arquitetura C): atenuacao do MLP em direcao a sua media; comeca ~0 (identico a A)
+        self.w2 = nn.Parameter(torch.zeros(dim))
+        self.b2 = nn.Parameter(torch.full((len(layers),), -4.0))
 
     def gate(self, z, l: int):
         i = self.idx[l]
         gv = torch.tanh(self.P(self.norm(z)) + self.e[i])
         return torch.sigmoid(gv @ self.w + self.b[i]).unsqueeze(-1)
+
+    def gates2(self, z, l: int):
+        """(a, b): intensidade da correcao e atenuacao do MLP (Arquitetura C)."""
+        i = self.idx[l]
+        gv = torch.tanh(self.P(self.norm(z)) + self.e[i])
+        return (torch.sigmoid(gv @ self.w + self.b[i]).unsqueeze(-1),
+                torch.sigmoid(gv @ self.w2 + self.b2[i]).unsqueeze(-1))
 
 
 class V3MLP(nn.Module):
@@ -55,6 +65,7 @@ class V3MLP(nn.Module):
         self.corr: Correction | None = None
         self.guide: Guide | None = None       # None -> portao constante 1 (A0)
         self.replace_with: torch.Tensor | None = None  # MEAN (realocacao B): substitui o MLP
+        self.atten_mean: torch.Tensor | None = None    # MEAN (Arquitetura C): alvo da atenuacao
         self.gate_stats = None                # para regularizacao/analise (media do portao no forward)
 
     def forward(self, z):
@@ -63,7 +74,13 @@ class V3MLP(nn.Module):
         y = self.replace_with.expand_as(z) if self.replace_with is not None else self.inner(z)
         if self.corr is not None:
             c = self.corr(z)
-            if self.guide is not None:
+            if self.guide is not None and self.atten_mean is not None:   # C
+                a, bb = self.guide.gates2(z, self.layer_idx)
+                self.gate_stats = a
+                self.gate2_stats = bb
+                y = y + bb * (self.atten_mean - y)
+                c = a * c
+            elif self.guide is not None:
                 a = self.guide.gate(z, self.layer_idx)
                 self.gate_stats = a
                 c = a * c
@@ -97,7 +114,7 @@ class LoRALinear(nn.Module):
 
 # --------------------------------------------------------------------------- montagem
 def attach_vetor(model, layers: list[int], r: int, *, guided: bool, replace: dict[int, torch.Tensor] | None = None,
-                 gate_bias: float = 0.0, seed: int = 0) -> dict:
+                 gate_bias: float = 0.0, seed: int = 0, atten: dict[int, torch.Tensor] | None = None) -> dict:
     """Instala correcoes em `layers` (A ou A0) e substituicoes MEAN em `replace` (B). Retorna modulos treinaveis."""
     d = model.config.hidden_size
     dev = next(model.parameters()).device
@@ -110,6 +127,8 @@ def attach_vetor(model, layers: list[int], r: int, *, guided: bool, replace: dic
             w.corr = Correction(d, r, seed=seed + l).to(dev)
             w.guide = guide
             corrs[str(l)] = w.corr
+            if atten and l in atten:
+                w.atten_mean = atten[l].to(dev)
         if replace and l in replace:
             w.replace_with = replace[l].to(dev)
     return {"corrections": corrs, "guide": guide}

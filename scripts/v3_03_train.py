@@ -43,7 +43,11 @@ def build(model, a):
     layers = LAYER_SETS[a.layers]
     rep = mean_replacements(a.replace, model.config.hidden_size) if a.arch in ("B", "B0") else {}
     layers = [l for l in layers if l not in rep]
-    mods = attach_vetor(model, layers, a.rank, guided=a.arch in ("A", "B"), replace=rep, seed=a.seed)
+    atten = None
+    if a.arch == "C":
+        ck = torch.load(ROOT / "results" / "v0.2" / "compensators.pt", weights_only=False)
+        atten = {l: ck["mean"][l]["ybar"].float() for l in layers}
+    mods = attach_vetor(model, layers, a.rank, guided=a.arch in ("A", "B", "C"), replace=rep, seed=a.seed, atten=atten)
     ps = list(mods["corrections"].parameters()) + (list(mods["guide"].parameters()) if mods["guide"] else [])
     return {"params": ps, "n_params": n_params(mods["corrections"], mods["guide"]), "mods": mods,
             "layers": layers, "replaced": sorted(rep)}
@@ -79,7 +83,7 @@ def ref_batches(tok, n_tokens=256, seed=0):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arch", required=True, choices=["A", "A0", "LORA", "B", "B0"])
+    ap.add_argument("--arch", required=True, choices=["A", "A0", "LORA", "B", "B0", "C"])
     ap.add_argument("--layers", default="spaced8")
     ap.add_argument("--rank", type=int, default=8)
     ap.add_argument("--replace", type=int, default=0)
