@@ -1,0 +1,2 @@
+A0_r8_kd | --arch A0 --layers spaced8 --rank 8 --alpha 1 --lr 5e-3
+LORA_r1_kd | --arch LORA --rank 1 --alpha 1 --lr 5e-3

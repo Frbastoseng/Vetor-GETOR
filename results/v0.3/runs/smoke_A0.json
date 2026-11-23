@@ -1,0 +1,65 @@
+{
+  "args": {
+    "arch": "A0",
+    "layers": "spaced8",
+    "rank": 8,
+    "replace": 0,
+    "task_weight": 1.0,
+    "alpha": 0.0,
+    "gamma": 0.0,
+    "lr": 0.002,
+    "epochs": 1.0,
+    "max_tokens": 8192,
+    "eval_every": 10,
+    "max_train": 300,
+    "seed": 0,
+    "tag": "smoke_A0"
+  },
+  "n_params": 73728,
+  "layers": [
+    3,
+    6,
+    9,
+    12,
+    15,
+    18,
+    21,
+    24
+  ],
+  "replaced": [],
+  "history": [
+    {
+      "step": 0,
+      "val_task": 1.8562116512545832,
+      "val_distill": 0.0
+    },
+    {
+      "step": 10,
+      "val_task": 1.8561951473907188,
+      "val_distill": 0.0,
+      "gates": {},
+      "elapsed_s": 17.199698209762573
+    },
+    {
+      "step": 13,
+      "val_task": 1.856193827258216,
+      "val_distill": 0.0,
+      "gates": {},
+      "elapsed_s": 36.08896732330322
+    }
+  ],
+  "best_val": 1.856193827258216,
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "train_seconds": 36.16132926940918
+}
