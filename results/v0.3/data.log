@@ -1,0 +1,12 @@
+/Users/frbastos.eng/Documents/dev/Vetor-GETOR/scripts/v3_01_data.py:49: DeprecationWarning: get_task_dict is deprecated. Use TaskManager.load() instead.
+  for _, task in leaf_tasks(get_task_dict([t], tm)).items():
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+/Users/frbastos.eng/Documents/dev/Vetor-GETOR/scripts/v3_01_data.py:49: DeprecationWarning: get_task_dict is deprecated. Use TaskManager.load() instead.
+  for _, task in leaf_tasks(get_task_dict([t], tm)).items():
+[Task: boolq] metric acc is defined, but aggregation is not. using default aggregation=mean
+[Task: boolq] metric acc is defined, but higher_is_better is not. using default higher_is_better=True
+/Users/frbastos.eng/Documents/dev/Vetor-GETOR/scripts/v3_01_data.py:49: DeprecationWarning: get_task_dict is deprecated. Use TaskManager.load() instead.
+  for _, task in leaf_tasks(get_task_dict([t], tm)).items():
+W1123 09:51:15.323000 32121 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+13-gramas de avaliacao: 4991488
+{'fontes': {'en': 'HuggingFaceTB/smol-smoltalk (Apache-2.0)', 'pt': 'recogna-nlp/UltrachatBR (MIT)'}, 'semente': 20261123, 'max_tokens': 512, 'descontaminacao': '13-gramas vs todas as tarefas da bateria (DEV+FINAL)', 'n_13gramas_avaliacao': 4991488, 'removidos_contaminacao': 1428, 'removidos_tamanho': 40629} train 16000 val 600

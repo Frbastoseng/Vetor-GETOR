@@ -7,6 +7,9 @@ Saidas: data/v3_{train,val}.jsonl (nao versionado), configs/v3_train_manifest.js
 from __future__ import annotations
 
 import ast
+import warnings
+
+warnings.filterwarnings("ignore", category=SyntaxWarning)
 import hashlib
 import json
 import re
@@ -61,14 +64,17 @@ def main():
 
     def accept(msgs, src, idx, lang):
         text = " ".join(m["content"] for m in msgs)
-        if ngrams(text) & grams:
-            stats["removidos_contaminacao"] += 1
+        if len(text) > 4 * MAX_TOKENS:  # filtro barato antes do caro
+            stats["removidos_tamanho"] += 1
             return False
         ids = tok.apply_chat_template(msgs, tokenize=True)
         if hasattr(ids, "input_ids"):
             ids = ids["input_ids"]
         if len(ids) > MAX_TOKENS:
             stats["removidos_tamanho"] += 1
+            return False
+        if ngrams(text) & grams:
+            stats["removidos_contaminacao"] += 1
             return False
         out.append({"id": f"{src}:{idx}", "lang": lang, "messages": msgs,
                     "sha": hashlib.sha256(json.dumps(msgs, ensure_ascii=False).encode()).hexdigest()[:16]})
@@ -91,7 +97,7 @@ def main():
         except Exception:
             continue
         msgs = []
-        for turn in conv:
+        for turn in conv[:1]:  # so o 1o turno (conversas do UltrachatBR sao longas)
             if "humano" in turn:
                 msgs.append({"role": "user", "content": turn["humano"]})
             if "assistente" in turn:
