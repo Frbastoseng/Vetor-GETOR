@@ -1,0 +1,13 @@
+W1122 22:17:08.802000 53767 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3579.04it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (10481 > 8192). Running this sequence through the model will result in indexing errors
+FULL                           267.6 tok/s  speedup 1.000 [1.000,1.000]  omissoes/token 0.00
+STATIC-GREEDY-ZERO@k6          274.3 tok/s  speedup 1.020 [1.014,1.029]  omissoes/token 6.00
+STATIC-GREEDY-MEAN@k6          275.4 tok/s  speedup 1.026 [1.021,1.035]  omissoes/token 6.00
+STATIC-GREEDY-LR8@k6           271.2 tok/s  speedup 1.008 [0.995,1.019]  omissoes/token 6.00
+STATIC-GREEDY-LR16@k6          269.0 tok/s  speedup 1.000 [0.997,1.009]  omissoes/token 6.00
+STATIC-GREEDY-LR32@k6          272.4 tok/s  speedup 1.009 [0.998,1.017]  omissoes/token 6.00
+GUIDED-T-LR32@k6                52.3 tok/s  speedup 0.194 [0.178,0.202]  omissoes/token 8.04
+GUIDED-DL-LR32@k6               49.8 tok/s  speedup 0.187 [0.180,0.200]  omissoes/token 7.22
+us/chamada: {'ZERO': 0.7, 'MEAN': 1.0, 'LR8': 18.6, 'LR16': 17.8, 'LR32': 16.7} MLP: 69.4
+roteador: {'GUIDED-T-LR32@k6': {'us_per_decision_with_sync': 562.5284732862686, 'flops_per_decision': 19424, 'params': 11390, 'syncs_per_token': 26}, 'GUIDED-DL-LR32@k6': {'us_per_decision_with_sync': 554.7763867070898, 'flops_per_decision': 19424, 'params': 11390, 'syncs_per_token': 26}}

@@ -1,0 +1,25 @@
+{
+  "frozen_before_final_evaluation": true,
+  "primary": "GUIDED-T-LR32",
+  "rationale": {
+    "compensator": "LR32: menor dNLL do STATIC-GREEDY em todos os k na validacao (Q1); R2 val 0,31 com 0,7% do custo de um MLP",
+    "router": "GUIDED-T (decisao antes do MLP do token atual): k=6 val 4,00% vs GUIDED-DL 7,90% com o mesmo treino",
+    "dagger_rounds": "rodadas 0,1,2 (limite pre-registrado R<=2); val k=6: r0 4,70% -> r1 4,27% -> r2 4,00%",
+    "target": "N=16, MSE em log(Delta_16 + 1e-4) — melhor das 6 configuracoes na validacao da rodada 2 (faixa 4,00-4,30%)",
+    "tau": "calibrado na validacao (64 janelas) para cada k; k_max = ceil(1,5 k)"
+  },
+  "ks": [3, 5, 6, 8, 10],
+  "criterion_k": 6,
+  "comps": ["ZERO", "MEAN", "LR8", "LR16", "LR32"],
+  "routers": {
+    "LR32": ["results/v0.2/router_LR32_r2_T.pt", "results/v0.2/router_LR32_r2_DL.pt"],
+    "ZERO": ["results/v0.2/router_ZERO_r0_T.pt", "results/v0.2/router_ZERO_r0_DL.pt"]
+  },
+  "controls": ["STATIC-GREEDY (ordem ajustada no treino, por compensador)", "STATIC (ranking v0.1)", "RANDOM (por janela, semente fixa)",
+               "v0.1-GUIDED-S e v0.1-GUIDED-D1 com ZERO (codigo e guia da v0.1, decode real)"],
+  "v01_ks": [3, 5, 6, 8, 10],
+  "n_final_windows": 200,
+  "window_seed": 2027,
+  "random_seed": 7,
+  "speed_benchmark": "scripts/v2_06_benchmark.py --split final --tag final, k=6, roteadores LR32 r2 (T e DL)"
+}

@@ -2,6 +2,34 @@
 
 > **Um vetor-guia probabilístico, lido dos estados internos de um token, consegue decidir quais blocos MLP de um Transformer denso pré-treinado podem ser pulados, economizando tempo real de decodificação sem degradar a qualidade?**
 
+## Estado atual (v0.2): critério de qualidade atingido; velocidade ainda não
+
+A v0.2 corrigiu as três falhas de desenho diagnosticadas na v0.1 ([pré-registro](ESPECIFICACAO_V0.2.md), publicado antes dos experimentos):
+
+- o MLP omitido passa a ser **substituído** por um mapa linear de posto 32, em vez de zerado;
+- o professor passa a medir o efeito **acumulado e conjunto** de cada decisão, com 3 rodadas no estilo DAgger;
+- o roteador passa a decidir **durante a travessia do token** (GUIDED-T), antes do MLP da camada atual.
+
+**Conjunto final** (200 artigos inéditos, avaliado uma única vez, com a decisão [congelada antes](configs/v2_decision.json)), omitindo 6 MLPs/token (23% dos elegíveis):
+
+| Política (mesmo compensador LR32, mesma taxa) | ΔNLL | IC95 |
+|---|---|---|
+| **GUIDED-T (v0.2)** | **4,47%** | [4,03 – 4,92] |
+| GUIDED-DL (mesmo roteador, mas com z do token anterior) | 8,11% | [7,45 – 8,81] |
+| STATIC-GREEDY (melhor conjunto fixo, considerando interações) | 10,86% | [10,15 – 11,55] |
+| RANDOM | 15,82% | [14,75 – 17,01] |
+| v0.1-GUIDED-D1 (referência histórica, ZERO) | 25,39% | [23,97 – 27,01] |
+
+**Três dos quatro critérios pré-registrados foram atingidos:** ≥20% dos MLPs elegíveis, ΔNLL ≤ 5% e superioridade sobre os controles com IC95 sem sobreposição.
+
+**Velocidade: não atingida.** Decidir antes de cada MLP exige 26 sincronizações GPU→CPU por token no PyTorch/MPS, e o GUIDED-T real roda a **0,19×** da velocidade do modelo completo. Isso estava previsto no pré-registro: a v0.2 testou a vantagem *matemática*. Fazer a decisão sem sincronização (no dispositivo) é o objetivo da próxima versão.
+
+Relatório completo, com todos os orçamentos, custos de compensação, overhead do guia e latência: **[results/v0.2/REPORT_v0.2.md](results/v0.2/REPORT_v0.2.md)**. Desvios do pré-registro: seção 11 de [ESPECIFICACAO_V0.2.md](ESPECIFICACAO_V0.2.md).
+
+---
+
+## v0.1 (baseline imutável, tag `v0.1`)
+
 **Estado (v0.1): resultado negativo, medido e reproduzível.** No SmolLM2-135M em Apple Silicon (MPS), o guia aprende sinal real, mas **nenhuma política atingiu o critério de sucesso** definido antes do experimento. Os motivos estão diagnosticados, e as próximas hipóteses estão em [docs/MELHORIAS.md](docs/MELHORIAS.md). Críticas e propostas são muito bem-vindas: veja [Como participar](#como-participar).
 
 *English summary:* We route (skip) whole MLP blocks of a frozen dense LLM during decoding, using a tiny learned probe (576→16, ~11k params) over each layer's MLP input. The probe learns real context signal (within-layer AUC 0.72 for the selected probe, up to 0.77 for other variants), but in real autoregressive decoding with joint skips no policy (learned, static, random) keeps NLL increase ≤5%, and speed gains are capped at ~13% because 135M-parameter decoding on PyTorch/MPS is CPU-dispatch-bound. Root causes measured: non-additive layer interactions (up to ~3×) and KV-cache error accumulation (~2×). All code, raw results and the pre-registered protocol are here.
@@ -69,7 +97,7 @@ Sem MPS, tudo roda em CPU (`device: cpu` em `configs/default.yaml`, ou `VETOR_DE
 - **Políticas:** FULL, RANDOM, STATIC (ranking do treino), ORACLE-DIAG (limite não implementável), GUIDED-S (decide no prefill) e GUIDED-D{1,4,8,16} (reavalia a cada K tokens com z do token anterior: causal). Todas comparadas com **o mesmo número de MLPs omitidos**.
 - **Medição de tempo:** prefill e decode separados, sincronização só nas bordas, ordem rotacionada, speedup pareado com IC95 bootstrap.
 
-Os critérios de sucesso foram fixados antes do experimento e estão resumidos acima.
+O protocolo da v0.2, pré-registrado antes dos experimentos, está em [ESPECIFICACAO_V0.2.md](ESPECIFICACAO_V0.2.md). Os critérios da v0.1 estão resumidos acima.
 
 ## Estrutura
 

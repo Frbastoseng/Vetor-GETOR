@@ -1,0 +1,5 @@
+W1122 20:35:02.464000 73860 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 9151.40it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (12504 > 8192). Running this sequence through the model will result in indexing errors
+LR32: ORACLE-GREEDY-TOKEN k=6: 1.19% [0.5650541186332703, 1.7907812595367432] | STATIC-GREEDY mesmas janelas: 10.54% (748s)
+ZERO: ORACLE-GREEDY-TOKEN k=6: 2.37% [1.4322611093521118, 3.170708656311035] | STATIC-GREEDY mesmas janelas: 19.26% (664s)

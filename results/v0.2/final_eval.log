@@ -1,0 +1,29 @@
+W1122 21:52:54.786000 34564 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 8927.68it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (16469 > 8192). Running this sequence through the model will result in indexing errors
+ZERO: STATIC-GREEDY-ZERO@k6=18.54%  STATIC-ZERO@k6=39.19%  RANDOM-ZERO@k6=26.59%  GUIDED-T-ZERO@k6=18.59%  GUIDED-DL-ZERO@k6=26.57%
+MEAN: STATIC-GREEDY-MEAN@k6=16.23%  STATIC-MEAN@k6=28.07%  RANDOM-MEAN@k6=22.62%
+LR8: STATIC-GREEDY-LR8@k6=13.35%  STATIC-LR8@k6=19.21%  RANDOM-LR8@k6=18.61%
+LR16: STATIC-GREEDY-LR16@k6=12.00%  STATIC-LR16@k6=16.18%  RANDOM-LR16@k6=17.31%
+LR32: STATIC-GREEDY-LR32@k6=10.86%  STATIC-LR32@k6=11.97%  RANDOM-LR32@k6=15.82%  GUIDED-T-LR32@k6=4.47%  GUIDED-DL-LR32@k6=8.11%
+GUIDED-DL-LR32@k6               8.11%  IC95 [7.45, 8.81]  omissoes/token 5.96
+GUIDED-DL-ZERO@k6              26.57%  IC95 [24.68, 28.52]  omissoes/token 5.91
+GUIDED-T-LR32@k6                4.47%  IC95 [4.03, 4.92]  omissoes/token 6.06
+GUIDED-T-ZERO@k6               18.59%  IC95 [17.29, 20.08]  omissoes/token 6.07
+RANDOM-LR16@k6                 17.31%  IC95 [16.22, 18.46]  omissoes/token 6.00
+RANDOM-LR32@k6                 15.82%  IC95 [14.75, 17.01]  omissoes/token 6.00
+RANDOM-LR8@k6                  18.61%  IC95 [17.45, 19.80]  omissoes/token 6.00
+RANDOM-MEAN@k6                 22.62%  IC95 [21.40, 23.93]  omissoes/token 6.00
+RANDOM-ZERO@k6                 26.59%  IC95 [25.22, 28.16]  omissoes/token 6.00
+STATIC-GREEDY-LR16@k6          12.00%  IC95 [11.17, 12.87]  omissoes/token 6.00
+STATIC-GREEDY-LR32@k6          10.86%  IC95 [10.15, 11.55]  omissoes/token 6.00
+STATIC-GREEDY-LR8@k6           13.35%  IC95 [12.51, 14.30]  omissoes/token 6.00
+STATIC-GREEDY-MEAN@k6          16.23%  IC95 [15.29, 17.29]  omissoes/token 6.00
+STATIC-GREEDY-ZERO@k6          18.54%  IC95 [17.57, 19.61]  omissoes/token 6.00
+STATIC-LR16@k6                 16.18%  IC95 [15.27, 17.18]  omissoes/token 6.00
+STATIC-LR32@k6                 11.97%  IC95 [11.21, 12.74]  omissoes/token 6.00
+STATIC-LR8@k6                  19.21%  IC95 [18.22, 20.28]  omissoes/token 6.00
+STATIC-MEAN@k6                 28.07%  IC95 [26.54, 29.72]  omissoes/token 6.00
+STATIC-ZERO@k6                 39.19%  IC95 [37.24, 41.39]  omissoes/token 6.00
+v0.1-GUIDED-D1-ZERO@k6         25.39%  IC95 [23.97, 27.01]  omissoes/token 6.00
+v0.1-GUIDED-S-ZERO@k6          32.01%  IC95 [29.86, 34.47]  omissoes/token 6.00
