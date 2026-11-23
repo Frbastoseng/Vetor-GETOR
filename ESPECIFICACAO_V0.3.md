@@ -105,7 +105,7 @@ L_stability = E_{x∈R} KL( p_FULL(·|x) ‖ p_θ(·|x) )  +  λ_G Σ_ℓ ‖G_�
 
 ## 8. Dados
 
-- **Avaliação:** 22 tarefas do lm-evaluation-harness, em EN e PT-BR, nas categorias raciocínio, conhecimento, interpretação, veracidade, matemática, instruções, programação e português. Cada tarefa é dividida em DEV e FINAL por hash (`configs/v3_eval_manifest.json`, commit `4acb3dd`). A metade FINAL só pode ser lida com `allow_final=True`.
+- **Avaliação:** 23 tarefas do lm-evaluation-harness, em EN e PT-BR, nas categorias raciocínio, conhecimento, interpretação, veracidade, matemática, instruções, programação e português. Cada tarefa é dividida em DEV e FINAL por hash (`configs/v3_eval_manifest.json`, commit `4acb3dd`). A metade FINAL só pode ser lida com `allow_final=True`.
 - **Treino:** dados genéricos de instrução (prompts e respostas), **disjuntos das tarefas de avaliação**. A fonte e os hashes serão registrados no plano antes do treino.
   - Os splits de treino das próprias tarefas **não** serão usados no regime principal, para que o ganho reflita qualidade geral, e não ajuste a benchmark.
   - Um regime "in-domain" com esses splits pode ser relatado à parte, como exploratório.
@@ -127,4 +127,8 @@ Especificação (este documento), plano experimental, módulos em `src/vetor/v3/
 
 ## 12. Registro de alterações
 
-*(vazio no momento do pré-registro)*
+**23/11/2026, antes do primeiro treino — `L_latency` com portão contínuo.** O termo `β·Σ c_ℓ·E[a_{ℓ,t}]` da seção 5 não tem efeito físico na Arquitetura A. Um portão contínuo calculado no dispositivo não evita o cálculo de `G_ℓ`, que é sempre executado e apenas multiplicado por `a`. Logo, a latência real de A depende só de |S| e r, e não dos valores do portão; evitar o cálculo exigiria uma decisão discreta no host, proibida pela regra de "nenhuma sincronização por camada". Consequências:
+
+- (i) em A e A₀, `β = 0`, e o controle de latência é feito pela escolha de arquitetura (fronteira de Pareto sobre |S| ∈ {4, 8} e r ∈ {4, 8, 16}, com throughput medido);
+- (ii) `L_latency` permanece apenas para decisões que mudam a execução real, como as substituições estáticas ou por sequência (`m_ℓ`) da Arquitetura B;
+- (iii) os critérios não mudam.

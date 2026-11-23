@@ -48,7 +48,7 @@ SUITE: dict[str, dict] = {
     "hellaswag_pt": {"cat": "portugues", "lang": "pt", "metric": "acc_norm,none"},
     "belebele_por_Latn": {"cat": "portugues", "lang": "pt", "metric": "acc_norm,none"},
     "global_piqa_parallel_cloze_por_latn_braz": {"cat": "portugues", "lang": "pt", "metric": "acc_norm,none"},
-    "assin2_rte": {"cat": "portugues", "lang": "pt", "metric": "acc,none"},
+    "assin2_rte": {"cat": "portugues", "lang": "pt", "metric": "f1,none", "corpus_f1": True},
 }
 
 
@@ -117,12 +117,19 @@ def run(model, tok, tasks: list[str], split: str, *, batch_size: int = 32, allow
         for t in ts:
             spec = SUITE.get(t) or SUITE.get(_parent(t)) or {}
             met = spec.get("metric", "acc,none")
-            mkey = met.split(",")[0]
-            per = [(s["doc_id"], float(s.get(mkey, s.get(met, float("nan")))))
-                   for s in r["samples"].get(t, [])]
+            mkey, mfilter = (met.split(",") + ["none"])[:2]
+            per = [(s["doc_id"], _val(s.get(mkey, s.get(met, float("nan")))))
+                   for s in r["samples"].get(t, []) if s.get("filter", "none") == mfilter]
             out["tasks"][t] = {"metric": met, "value": r["results"].get(t, {}).get(met),
                                "n": len(per), "per_example": per}
     return out
+
+
+def _val(v):
+    """Escore por exemplo: float, ou par (gabarito, predicao) para metricas de corpus (F1 macro)."""
+    if isinstance(v, (list, tuple)):
+        return [int(x) if not isinstance(x, str) else x for x in v]
+    return float(v)
 
 
 def _parent(leaf: str) -> str:

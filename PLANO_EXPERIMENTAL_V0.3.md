@@ -83,7 +83,24 @@ Sementes fixas; revisão fixa do modelo e do professor; hashes dos dados; checkp
 
 ## 8. Tarefas aplicáveis (preenchido após o baseline da Fase 2, antes do 1º treino)
 
-*(pendente)*
+Regra da seção 2 aplicada ao FULL na metade DEV em 23/11/2026 (`results/v0.3/applicability.json`). **10 de 23 tarefas são aplicáveis.** A média macro do FULL na DEV é **36.26 p.p.**
+
+| Tarefa | Categoria | FULL (DEV) | Acaso |
+|---|---|---|---|
+| arc_challenge | raciocinio | 29.03 | 25.01 |
+| hellaswag | raciocinio | 42.63 | 25.00 |
+| piqa | raciocinio | 65.70 | 50.00 |
+| arc_easy | conhecimento | 51.12 | 25.01 |
+| openbookqa | conhecimento | 35.29 | 25.00 |
+| sciq | conhecimento | 77.25 | 25.00 |
+| arithmetic_2dm | matematica | 4.05 | 0.00 |
+| ifeval | instrucoes | 23.02 | 0.00 |
+| mbpp | programacao | 5.24 | 0.00 |
+| hellaswag_pt | portugues | 29.27 | 25.00 |
+
+No piso (relatadas, fora da média principal e de Q2): winogrande (51.7 vs acaso 50.0), boolq (43.2 vs acaso 50.0), belebele_eng_Latn (22.4 vs acaso 25.0), truthfulqa_mc1 (24.6 vs acaso 22.5), truthfulqa_mc2 (42.5 vs acaso 45.8), arithmetic_2da (0.6 vs acaso 0.0), arithmetic_3da (0.0 vs acaso 0.0), gsm8k (1.5 vs acaso 0.0), humaneval (0.0 vs acaso 0.0), arc_pt (25.4 vs acaso 25.0), belebele_por_Latn (23.9 vs acaso 25.0), global_piqa_parallel_cloze_por_latn_braz (27.7 vs acaso 25.0), assin2_rte (42.8 vs acaso 50.0).
+
+Categorias aplicáveis para Q2: raciocínio, conhecimento, matemática, instruções, programação e português. Interpretação e veracidade não têm tarefa aplicável.
 
 ## 9. Registro de alterações
 
