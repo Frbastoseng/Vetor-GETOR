@@ -51,7 +51,7 @@ def build(model, a):
 
 def teacher_cache(split):
     p = ROOT / "data" / f"v3_teacher_top64_{split}.pt"
-    return torch.load(p, weights_only=False)["examples"]
+    return torch.load(p, weights_only=False)["examples"] if p.exists() else None
 
 
 def step_losses(model, ids, att, lab, tcache, idx, a, device):
@@ -121,7 +121,7 @@ def main():
                 ids, att, lab = collate(venc, idx, pad, device)
                 ls = step_losses(model, ids, att, lab, tc_va, idx, argparse.Namespace(alpha=1.0), device)
                 for k in tot:
-                    tot[k] += float(ls[k])
+                    tot[k] += float(ls.get(k, 0.0))
                 n += 1
         model.train()
         return {k: v / n for k, v in tot.items()}
