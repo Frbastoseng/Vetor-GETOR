@@ -17,3 +17,4 @@ data/v2_articles.json
 # documentos internos (mantidos so localmente)
 ESPECIFICACAO_TECNICA.md
 PROMPT_PARA_CLAUDE.md
+results/v0.2/compensators.pt

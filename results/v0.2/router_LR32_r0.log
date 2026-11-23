@@ -1,0 +1,17 @@
+W1122 20:30:08.837000 70091 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 8661.57it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (12504 > 8192). Running this sequence through the model will result in indexing errors
+T N= 8 mse    : dNLL=  5.02% [4.54,5.54] skips/token=6.03 (14s)
+T N= 8 pinball: dNLL=  5.04% [4.57,5.54] skips/token=6.01 (13s)
+T N=16 mse    : dNLL=  4.70% [4.24,5.18] skips/token=5.99 (12s)
+T N=16 pinball: dNLL=  5.22% [4.72,5.73] skips/token=6.04 (12s)
+T N=32 mse    : dNLL=  4.72% [4.24,5.19] skips/token=6.00 (12s)
+T N=32 pinball: dNLL=  4.87% [4.38,5.38] skips/token=6.06 (12s)
+== melhor T: N=16 mse  curva val: k3=1.30%(2.99)  k5=3.14%(5.00)  k6=4.70%(5.99)  k8=8.39%(7.98)  k10=13.90%(9.97)
+DL N= 8 mse    : dNLL=  8.45% [7.82,9.12] skips/token=5.98 (13s)
+DL N= 8 pinball: dNLL=  8.74% [8.04,9.45] skips/token=5.93 (14s)
+DL N=16 mse    : dNLL=  8.34% [7.71,9.01] skips/token=5.97 (14s)
+DL N=16 pinball: dNLL=  8.51% [7.83,9.22] skips/token=5.93 (14s)
+DL N=32 mse    : dNLL=  8.25% [7.64,8.92] skips/token=5.97 (15s)
+DL N=32 pinball: dNLL=  8.78% [8.08,9.47] skips/token=5.96 (15s)
+== melhor DL: N=32 mse  curva val: k3=3.15%(2.96)  k5=6.35%(4.94)  k6=8.25%(5.97)  k8=12.70%(7.94)  k10=19.17%(9.95)
