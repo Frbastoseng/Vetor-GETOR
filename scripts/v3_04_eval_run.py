@@ -26,10 +26,22 @@ def load_run(model, tag):
     ck = torch.load(RUNS / f"{tag}.pt", weights_only=False)
     a = argparse.Namespace(**ck["args"])
     b = build(model, a)
+    saved = [ck["best_params"][f"p{i}"] for i in range(len(ck["best_params"]))]
+    j, skipped = 0, 0
     with torch.no_grad():
-        for i, p in enumerate(b["params"]):
-            p.copy_(ck["best_params"][f"p{i}"].to(p.device))
+        # casamento em ordem por formato: checkpoints anteriores ao 2o portao (Arquitetura C) nao tem w2/b2,
+        # que ficam no valor inicial (nao usados por A/B/A0).
+        for p in b["params"]:
+            if j < len(saved) and saved[j].shape == p.shape:
+                p.copy_(saved[j].to(p.device))
+                j += 1
+            else:
+                skipped += 1
             p.requires_grad_(False)
+    if j != len(saved):
+        raise RuntimeError(f"{tag}: {len(saved) - j} parametros salvos nao foram carregados")
+    if skipped and a.arch == "C":
+        raise RuntimeError(f"{tag}: arquitetura C com parametros nao carregados")
     if a.arch == "LORA":
         merge_lora(model)  # avaliado JA FUNDIDO (como seria usado)
     return a, b
