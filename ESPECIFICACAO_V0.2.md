@@ -153,3 +153,12 @@ Perguntas intermediárias da v0.2, relatadas mesmo sem sucesso final:
 ## 11. Registro de alterações deste protocolo
 
 *(vazio no momento do pré-registro)*
+
+**22/11/2026, após a avaliação final.** Desvios em relação ao texto acima. Nenhum deles alterou o critério de sucesso nem foi decidido com dados do conjunto final.
+
+1. **GUIDED-DL** foi implementado como o *mesmo* roteador do GUIDED-T, recebendo `z[l,t−1]` (mesma camada, token anterior) em vez de `z[l,t]`. Não foi usado o esquema top-k em lote da v0.1. Assim, a comparação da Q4 isola apenas o momento da decisão. A v0.1-GUIDED-D1 original foi avaliada à parte, como referência histórica.
+2. **ORACLE-GREEDY-TOKEN** usou como objetivo o KL acumulado em H = 16 posições contra o FULL, em 16 janelas de validação e com k fixo por token.
+3. **Rodadas DAgger:** a base de cada rodada foi o GUIDED-T da rodada anterior em k = 6. A rodada 2 (limite pré-registrado) foi escolhida na validação.
+4. **Não executados:** o reajuste do compensador sob a política (`LR-r/iter`) e a concordância de geração greedy na avaliação em lote (sem forward único equivalente).
+5. **τ** foi calibrado em 64 das 200 janelas de validação.
+6. **Taxa na geração livre:** no benchmark de velocidade (geração greedy), o GUIDED-T com o τ de k = 6 omitiu 8,04 MLPs/token, contra 6,06 no texto natural da avaliação de qualidade. O τ calibrado em texto natural não garante a mesma taxa em texto gerado pelo próprio modelo. A qualidade relatada vale para a taxa de 6,06.
