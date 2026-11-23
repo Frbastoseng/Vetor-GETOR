@@ -31,9 +31,11 @@ def main():
     dec = json.loads((ROOT / "configs" / "v3_decision.json").read_text())
     tasks = [r["task"] for r in json.loads((R3 / "applicability.json").read_text()) if r["applicable"]]
     cats = {t: SUITE[t]["cat"] for t in tasks}
-    models = {"FULL": combine([FIN / "FULL.json"]), "V02": combine([FIN / "V02.json"])}
+    models = {"FULL": combine([FIN / "FULL.json"])}
+    if (FIN / "V02.json").exists():
+        models["V02"] = combine([FIN / "V02.json"])
     for m, tags in dec["models"].items():
-        if isinstance(tags, list) and tags:
+        if isinstance(tags, list) and tags and all((FIN / f"{m}__{t}.json").exists() for t in tags):
             models[m] = combine([FIN / f"{m}__{t}.json" for t in tags])
     full = models["FULL"]
     cmp = {m: paired_macro(models[m], full, tasks) for m in models if m != "FULL"}
@@ -54,7 +56,7 @@ def main():
     # ------------------------------------------------ criterios
     p = cmp[prim]
     catd = by_category(p, cats)
-    best_ctrl = max(("A0", "LORA", "LORA_KD"), key=lambda m: cmp[m]["macro_diff_pp"])
+    best_ctrl = max((m for m in ("A0", "LORA", "LORA_KD") if m in cmp), key=lambda m: cmp[m]["macro_diff_pp"])
     q3 = paired_macro(models[prim], models[best_ctrl], tasks)
     s1a = paired_macro(models[prim], models["A0"], tasks)
     s1b = paired_macro(models[prim], models["LORA"], tasks)
@@ -76,7 +78,7 @@ def main():
 
     # ------------------------------------------------ tabela principal
     a("## 2. Qualidade na metade FINAL (diferença vs FULL, p.p., IC95)\n")
-    order = ["A", "A0", "C", "LORA", "LORA_KD", "B", "B0", "V02"]
+    order = [m for m in ["A", "A0", "C", "LORA", "LORA_KD", "B", "B0", "V02"] if m in cmp]
     desc = {"A": "VETOR A: correção + portão do guia (2 sementes)", "A0": "A₀: correção estática, sem guia (2 sementes)",
             "C": "VETOR C: guia também atenua o MLP", "LORA": "LoRA, mesmos dados e perda (2 sementes)",
             "LORA_KD": "LoRA + destilação (destilação convencional)", "B": "VETOR B: 4 MLPs → MEAN + correções com guia",
@@ -95,6 +97,8 @@ def main():
     for x, y, what in (("A", "A0", "valor do portão adaptativo (S1)"), ("A", "LORA", "VETOR vs adapter convencional (S1)"),
                        ("A0", "LORA", "correção residual vs LoRA"), ("C", "A0", "atenuação adaptativa"),
                        ("B", "B0", "guia na realocação"), ("LORA_KD", "LORA", "efeito da destilação")):
+        if x not in models or y not in models:
+            continue
         r = paired_macro(models[x], models[y], tasks)
         a(f"| {x} − {y} | {r['macro_diff_pp']:+.2f} | [{r['ci95'][0]:+.2f}, {r['ci95'][1]:+.2f}] | {what} |")
 
@@ -118,7 +122,7 @@ def main():
         fig, ax = plt.subplots(figsize=(7, 4.6))
         for m in ("A", "A0", "C", "LORA", "B", "B0"):
             tg = tagmap[m]
-            if tg in perf:
+            if tg in perf and m in cmp:
                 x = 100 * perf[tg]["throughput_ratio_median"]
                 ax.errorbar(x, cmp[m]["macro_diff_pp"], yerr=[[cmp[m]["macro_diff_pp"] - cmp[m]["ci95"][0]], [cmp[m]["ci95"][1] - cmp[m]["macro_diff_pp"]]],
                             fmt="o", capsize=3, label=m)
@@ -131,6 +135,16 @@ def main():
 
     # ------------------------------------------------ DEV
     a("\n## 4. Todas as configurações testadas na DEV (desenvolvimento)\n")
+    a("Os modelos não avaliados na FINAL (C, B, B₀, LoRA+destilação e v0.2) aparecem **só aqui, com resultados da DEV**. "
+      "Ver a seção 9 de `PLANO_EXPERIMENTAL_V0.3.md`.\n")
+    dv = lambda t: json.loads((R3 / "runs" / f"{t}_dev.json").read_text())
+    a("**Comparações diretas na DEV (semente 0, pareadas):**\n")
+    a("| Comparação | Δ (p.p.) | IC95 |\n|---|---|---|")
+    for x, y in (("A_r8_task_g1", "A0_r8_task_g1"), ("B_r8_rep4_task_g1", "B0_r8_rep4_task_g1"),
+                 ("C_r8_task_g1", "A0_r8_task_g1"), ("A0_r8_task_g1", "LORA_r1_task_g1_lr1e3")):
+        r = paired_macro(dv(x), dv(y), tasks)
+        a(f"| {x} − {y} | {r['macro_diff_pp']:+.2f} | [{r['ci95'][0]:+.2f}, {r['ci95'][1]:+.2f}] |")
+    a("")
     a("| Execução | Parâmetros | Δ vs FULL (DEV) | IC95 |\n|---|---|---|---|")
     for f in sorted((R3 / "runs").glob("*_dev.json")):
         d = json.loads(f.read_text())

@@ -104,4 +104,4 @@ Categorias aplicáveis para Q2: raciocínio, conhecimento, matemática, instruç
 
 ## 9. Registro de alterações
 
-*(vazio no momento do pré-registro)*
+**23/11/2026, ~19h, antes de ler o conjunto FINAL — avaliação final reduzida.** A pedido do responsável pelo projeto, e diante dos resultados consistentes na DEV (o vetor-guia não acrescentou qualidade em A, B nem C, e a destilação não teve efeito), a avaliação FINAL foi restrita aos modelos que respondem a Q1–Q3 e S1: **FULL, A (VETOR principal), A₀ e LoRA**, com 2 sementes cada. C, B, B₀, LoRA+destilação e a v0.2 são relatados **apenas com resultados da DEV**, identificados como tal. A decisão congelada (`configs/v3_decision.json`) não foi alterada, e os critérios também não. A comparação Q3 usa o melhor entre A₀ e LoRA, porque o LoRA+destilação não foi avaliado na FINAL.

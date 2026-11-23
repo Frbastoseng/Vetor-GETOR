@@ -49,6 +49,10 @@ def attach_v02(model, device):
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--only", nargs="*", default=None, help="subconjunto de modelos da decisao (desvio registrado)")
+    args = ap.parse_args()
     commit = require_committed()
     os.environ.setdefault("HF_ALLOW_CODE_EVAL", "1")
     dec = json.loads(DEC.read_text())
@@ -58,6 +62,8 @@ def main():
     tasks = [r["task"] for r in json.loads((ROOT / "results" / "v0.3" / "applicability.json").read_text()) if r["applicable"]]
     OUT.mkdir(parents=True, exist_ok=True)
     jobs = [("FULL", None)] + [(f"{m}__{t}", t) for m, tags in dec["models"].items() if isinstance(tags, list) for t in tags] + [("V02", "V02")]
+    if args.only:
+        jobs = [j for j in jobs if j[0].split("__")[0] in args.only]
     for name, tag in jobs:
         path = OUT / f"{name}.json"
         if path.exists():
