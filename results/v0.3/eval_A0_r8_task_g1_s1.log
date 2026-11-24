@@ -17,3 +17,14 @@ Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF
 Running generate_until requests:   0%|          | 0/278 [00:00<?, ?it/s]Running generate_until requests:   0%|          | 1/278 [00:32<2:30:22, 32.57s/it]Running generate_until requests:  12%|█▏        | 33/278 [01:00<06:19,  1.55s/it] Running generate_until requests:  23%|██▎       | 65/278 [01:28<04:05,  1.15s/it]Running generate_until requests:  35%|███▍      | 97/278 [01:55<03:05,  1.02s/it]Running generate_until requests:  46%|████▋     | 129/278 [02:23<02:23,  1.04it/s]Running generate_until requests:  58%|█████▊    | 161/278 [02:51<01:48,  1.08it/s]Running generate_until requests:  69%|██████▉   | 193/278 [03:18<01:16,  1.10it/s]Running generate_until requests:  81%|████████  | 225/278 [03:46<00:47,  1.12it/s]Running generate_until requests:  92%|█████████▏| 257/278 [04:11<00:17,  1.17it/s]Running generate_until requests: 100%|██████████| 278/278 [04:11<00:00,  1.11it/s]
   0%|          | 0/248 [00:00<?, ?it/s] 15%|█▍        | 37/248 [00:00<00:00, 361.97it/s] 31%|███       | 76/248 [00:00<00:00, 375.30it/s] 46%|████▋     | 115/248 [00:00<00:00, 378.84it/s] 62%|██████▏   | 154/248 [00:00<00:00, 381.18it/s] 78%|███████▊  | 193/248 [00:00<00:00, 332.92it/s] 94%|█████████▍| 233/248 [00:00<00:00, 350.91it/s]100%|██████████| 248/248 [00:00<00:00, 358.75it/s]
 Running generate_until requests:   0%|          | 0/248 [00:00<?, ?it/s]Running generate_until requests:   0%|          | 1/248 [00:04<18:41,  4.54s/it]Running generate_until requests:  13%|█▎        | 33/248 [00:07<00:42,  5.03it/s]Running generate_until requests:  26%|██▌       | 65/248 [00:10<00:23,  7.83it/s]Running generate_until requests:  39%|███▉      | 97/248 [00:12<00:16,  9.32it/s]Running generate_until requests:  52%|█████▏    | 129/248 [00:15<00:10, 11.11it/s]Running generate_until requests:  65%|██████▍   | 161/248 [00:21<00:11,  7.44it/s]Running generate_until requests:  78%|███████▊  | 193/248 [00:23<00:06,  9.06it/s]Running generate_until requests:  91%|█████████ | 225/248 [00:30<00:03,  7.27it/s]Running generate_until requests: 100%|██████████| 248/248 [00:30<00:00,  8.25it/s]
+[A0_r8_task_g1_s1] macro DEV = 36.48 vs FULL 36.26  diff = +0.22 p.p. IC95 [-0.35, +0.79]
+   arc_challenge     28.01 vs  29.03  (-1.02)
+   hellaswag         42.69 vs  42.63  (+0.06)
+   piqa              65.94 vs  65.70  (+0.23)
+   arc_easy          52.75 vs  51.12  (+1.64)
+   openbookqa        35.29 vs  35.29  (+0.00)
+   sciq              76.43 vs  77.25  (-0.82)
+   arithmetic_2dm     5.78 vs   4.05  (+1.72)
+   ifeval            23.02 vs  23.02  (+0.00)
+   mbpp               5.65 vs   5.24  (+0.40)
+   hellaswag_pt      29.27 vs  29.27  (+0.00)

@@ -2,7 +2,28 @@
 
 > **Um vetor-guia probabilístico, lido dos estados internos de um token, consegue decidir quais blocos MLP de um Transformer denso pré-treinado podem ser pulados, economizando tempo real de decodificação sem degradar a qualidade?**
 
-## Estado atual (v0.2): critério de qualidade atingido; velocidade ainda não
+## Estado atual (v0.3): resultado negativo — o vetor-guia não melhorou a qualidade
+
+A v0.3 mudou o objetivo para **melhorar a qualidade** do modelo, com velocidade ≥ 98% da original, usando pequenos módulos treináveis controlados pelo vetor-guia. O modelo original continuou congelado. Pré-registro: [ESPECIFICACAO_V0.3.md](ESPECIFICACAO_V0.3.md) e [PLANO_EXPERIMENTAL_V0.3.md](PLANO_EXPERIMENTAL_V0.3.md).
+
+**Avaliação final única** (metade intocada de 10 tarefas verificáveis do lm-evaluation-harness, em EN e PT-BR; decisão congelada antes):
+
+| Modelo (2 sementes cada) | Δ qualidade vs original | IC95 | Velocidade |
+|---|---|---|---|
+| VETOR A: correção residual + portão do vetor-guia | +0,17 p.p. | [−0,26, +0,61] | 85,7% |
+| A₀: mesma correção, **sem** guia | +0,38 p.p. | [−0,08, +0,86] | 95,4% |
+| LoRA (mesmos dados e perda) | −0,27 p.p. | [−1,00, +0,47] | 99,6% |
+
+- **Nenhum critério de qualidade foi atingido.** A meta era +5 p.p.
+- **O vetor-guia não acrescentou valor:** A − A₀ = −0,21 p.p. [−0,57, +0,14]. Nas três arquiteturas com guia (A, B, C), o portão aprendeu a ficar quase sempre ligado, imitando a versão sem guia.
+- **O ganho em seguir instruções visto no desenvolvimento** (+4,3 no IFEval) **não se repetiu** na metade final (−2,1). Era ruído somado ao viés de seleção.
+- **A destilação de um professor de 1,7B não ajudou** em nenhuma configuração.
+
+Relatório completo: [results/v0.3/REPORT_v0.3.md](results/v0.3/REPORT_v0.3.md).
+
+---
+
+## v0.2: critério de qualidade atingido; velocidade ainda não
 
 A v0.2 corrigiu as três falhas de desenho diagnosticadas na v0.1 ([pré-registro](ESPECIFICACAO_V0.2.md), publicado antes dos experimentos):
 
