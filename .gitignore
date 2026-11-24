@@ -18,3 +18,5 @@ data/v2_articles.json
 ESPECIFICACAO_TECNICA.md
 PROMPT_PARA_CLAUDE.md
 results/v0.2/compensators.pt
+data/v4_texts.json
+data/v4_*.jsonl

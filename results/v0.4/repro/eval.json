@@ -1,0 +1,76 @@
+{
+  "n_windows": 200,
+  "rows": {
+    "STATIC-GREEDY-ZERO@k6": {
+      "reproduced": 18.543503494728952,
+      "v02_reported": 18.543506622314453,
+      "abs_diff_pp": 3.1275855008061626e-06,
+      "skips": 6.0,
+      "v02_skips": 6.0
+    },
+    "RANDOM-ZERO@k6": {
+      "reproduced": 26.593503295164254,
+      "v02_reported": 26.593505859375,
+      "abs_diff_pp": 2.564210745958917e-06,
+      "skips": 6.0,
+      "v02_skips": 6.0
+    },
+    "GUIDED-T-ZERO@k6": {
+      "reproduced": 18.585476276266277,
+      "v02_reported": 18.585479736328125,
+      "abs_diff_pp": 3.46006184770431e-06,
+      "skips": 6.070634841918945,
+      "v02_skips": 6.070634841918945
+    },
+    "GUIDED-DL-ZERO@k6": {
+      "reproduced": 26.56792081911967,
+      "v02_reported": 26.56792449951172,
+      "abs_diff_pp": 3.680392048011072e-06,
+      "skips": 5.907222270965576,
+      "v02_skips": 5.907222270965576
+    },
+    "STATIC-GREEDY-LR32@k6": {
+      "reproduced": 10.862809940176454,
+      "v02_reported": 10.86280345916748,
+      "abs_diff_pp": 6.481008973935332e-06,
+      "skips": 6.0,
+      "v02_skips": 6.0
+    },
+    "RANDOM-LR32@k6": {
+      "reproduced": 15.823582580310426,
+      "v02_reported": 15.823591232299805,
+      "abs_diff_pp": 8.65198937916034e-06,
+      "skips": 6.0,
+      "v02_skips": 6.0
+    },
+    "GUIDED-T-LR32@k6": {
+      "reproduced": 4.467172051039059,
+      "v02_reported": 4.467177391052246,
+      "abs_diff_pp": 5.340013187193904e-06,
+      "skips": 6.0565080642700195,
+      "v02_skips": 6.0565080642700195
+    },
+    "GUIDED-DL-LR32@k6": {
+      "reproduced": 8.114057576464129,
+      "v02_reported": 8.114063262939453,
+      "abs_diff_pp": 5.686475324395701e-06,
+      "skips": 5.955793857574463,
+      "v02_skips": 5.955793857574463
+    }
+  },
+  "max_abs_diff_pp": 8.65198937916034e-06,
+  "gate_ok": true,
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "seconds": 29.009881019592285
+}

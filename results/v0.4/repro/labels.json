@@ -1,0 +1,21 @@
+{
+  "cells": 4992,
+  "same_cells": true,
+  "d16_spearman": 0.9999999999999999,
+  "d16_median_rel_err": 0.0,
+  "d16_p99_rel_err": 0.0,
+  "d16_max_abs_err": 0.0,
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "seconds": 57.24045991897583
+}

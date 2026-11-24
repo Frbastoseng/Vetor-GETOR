@@ -172,4 +172,20 @@ O arquivo `configs/v4_decision.json` é commitado e publicado na branch, e o scr
 
 ## 9. Registro de alterações
 
-*(vazio no pré-registro)*
+**24/11/2026, antes de qualquer treino no 1.7B: ajustes da bateria.** Nenhum deles foi decidido com dados de treino de roteador ou do conjunto final.
+
+1. **Global-MMLU PT removido.** Carregar o grupo (dezenas de subtarefas, cada uma baixando o dataset) levou mais de 10 minutos e pesaria em todas as avaliações. O português continua coberto por arc_pt e assin2_rte (partições não usadas), pela NLL em pt_wiki/chat_pt e pela geração livre em PT.
+2. **gsm8k com template de chat e demonstrações como turnos** (`apply_chat_template`, `fewshot_as_multiturn`). No formato bruto de 5 exemplos, o modelo Instruct responde `<|im_end|>` de imediato. Todas as respostas vinham vazias (0% no FULL), um defeito de configuração do harness, não do modelo. O resultado bruto foi guardado em `full_dev_tasks.json` como descartado.
+3. **Geração limitada** a 256 tokens no gsm8k e 384 no IF-v0.4 (o IFEval original usa 1280), para caber no orçamento de tempo. A mesma regra vale para todas as políticas.
+4. **Regime das políticas nas tarefas:**
+   - nas tarefas de verossimilhança, as decisões valem em **todas** as posições, com τ_tf, como se cada token fosse decodificado;
+   - nas tarefas de geração, o prompt não é roteado e os tokens gerados usam τ_gen.
+5. **GUIDED-DL é avaliado só em NLL.** Ele precisa do `z` do token anterior entre passos de geração em lote, o que o modo usado em lm-eval não fornece. RANDOM também só entra na NLL: nas tarefas, o critério M4 compara VETOR com o FULL.
+6. **Controle sem compensação:** GUIDED-T-ZERO com professor próprio (rodada 0) e 3 sementes, como na v0.2. Mais STATIC-GREEDY-ZERO e RANDOM-ZERO.
+
+**24/11/2026, fim da Fase 1, antes de qualquer treino no 1.7B: política de orçamento.** A Fase 1 (`REPRODUCAO_V0.2.md`) mostrou que a divergência vem da mudança de distribuição do texto: o decode real e o modo em lote concordam no mesmo texto. Fica adotada a opção prevista na seção 3:
+
+- τ_tf é calibrado em 64 janelas de texto natural (val/calib);
+- τ_gen é calibrado nas continuações greedy do FULL a partir dos mesmos prompts;
+- ambos visam k = 5;
+- o critério M1 é verificado nos dois regimes.
