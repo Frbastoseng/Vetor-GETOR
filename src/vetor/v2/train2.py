@@ -12,7 +12,8 @@ EPS = 1e-4
 
 def train_router(data: dict, *, d: int, L: int, N: int, lagged: bool, loss: str = "mse", q: float = 0.5,
                  epochs: int = 40, lr: float = 3e-3, wd: float = 1e-2, bs: int = 4096, seed: int = 0,
-                 device: str = "cpu") -> TraversalRouter:
+                 device: str = "cpu", n_el: int = 26) -> TraversalRouter:
+    """n_el: nº de camadas elegiveis (normaliza a feature n). 26 = SmolLM2-135M (v0.2); passar len(E) em outros modelos."""
     torch.manual_seed(seed)
     r = TraversalRouter(d, L, lagged=lagged, seed=seed)
     z = (data["z_lag"] if lagged else data["z"]).float()
@@ -24,7 +25,7 @@ def train_router(data: dict, *, d: int, L: int, N: int, lagged: bool, loss: str 
     z, y, lid, bits, n = (t.to(device) for t in (z, y, lid, bits, n))
     opt = torch.optim.AdamW(r.parameters(), lr=lr, weight_decay=wd)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, epochs)
-    r.n_el = 26
+    r.n_el = n_el
     for _ in range(epochs):
         perm = torch.randperm(z.shape[0], device=device)
         for i in range(0, z.shape[0], bs):

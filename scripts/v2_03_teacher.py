@@ -29,7 +29,10 @@ def load_comps(name, L, d, device):
     from vetor.v2.compensate import make_comps
     if name == "ZERO":
         return zero_comps(L, d, device)
-    ck = torch.load(ROOT / "results" / "v0.2" / "compensators.pt", weights_only=False)
+    f = ROOT / "results" / "v0.2" / "compensators.pt"
+    if not f.exists():  # copia compacta publicada (v0.4); mesmos valores em float32
+        f = ROOT / "results" / "v0.2" / "compensators_f32.pt"
+    ck = torch.load(f, weights_only=False)
     if name == "MEAN":
         return make_comps("mean", ck["mean"], L, d, 0, device)
     r = int(name[2:])

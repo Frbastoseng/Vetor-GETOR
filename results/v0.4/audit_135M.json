@@ -1,0 +1,120 @@
+{
+  "model": "135M",
+  "env": {
+    "python": "3.14.3",
+    "platform": "macOS-15.7.7-arm64-arm-64bit-Mach-O",
+    "macos": "15.7.7",
+    "cpu": "Apple M4 Max",
+    "mem_bytes": 137438953472,
+    "torch": "2.15.0",
+    "transformers": "5.24.0",
+    "numpy": "2.5.5",
+    "device": "mps",
+    "mps_available": true
+  },
+  "L": 30,
+  "d": 576,
+  "d_ff": 1536,
+  "eligible": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27
+  ],
+  "checks": {
+    "1_instrumented_equals_original": {
+      "max_abs_logit_diff_real_path": 0.0,
+      "max_abs_logprob_diff_masked_path": 0.0
+    },
+    "2_skipped_mlp_not_executed": {
+      "skip_layers": [
+        3,
+        7,
+        11,
+        15,
+        19,
+        23,
+        27
+      ],
+      "decode_forwards": 44,
+      "inner_calls_skipped_layers": {
+        "3": 1,
+        "7": 1,
+        "11": 1,
+        "15": 1,
+        "19": 1,
+        "23": 1,
+        "27": 1
+      },
+      "inner_calls_other_layers_min_max": [
+        45,
+        45
+      ],
+      "expected": "camadas omitidas: 1 chamada (so o prefill); demais: 1 + (n-1)",
+      "ok": true
+    },
+    "3a_masked_equals_real_static": {
+      "max_abs_logprob_diff": 6.4849853515625e-05,
+      "mlp_skipped_real": 308,
+      "expected": 308
+    },
+    "3b_masked_equals_real_router_T": {
+      "max_abs_logprob_diff": 7.915496826171875e-05,
+      "skips_real": 258,
+      "skips_masked": 258,
+      "decisions_identical": true,
+      "protected_never_skipped": true,
+      "prefill_never_skipped": true
+    },
+    "3b_masked_equals_real_router_DL": {
+      "max_abs_logprob_diff": 0.0002384185791015625,
+      "skips_real": 238,
+      "skips_masked": 238,
+      "decisions_identical": true,
+      "protected_never_skipped": true,
+      "prefill_never_skipped": true
+    },
+    "4_kv_cache_full_decode_equals_forward": {
+      "max_abs_logprob_diff": 6.29425048828125e-05
+    },
+    "5_token_alignment": {
+      "nll_ours": 110.0766830444336,
+      "nll_hf_shifted": 110.0766830444336,
+      "abs_diff": 0.0,
+      "n_positions": 44
+    },
+    "6_flops": {
+      "mlp_counted": 5308416,
+      "mlp_formula_6_d_dff": 5308416,
+      "lr32_counted": 73728,
+      "lr32_formula_v02": 38016,
+      "lr32_note": "a v0.2 contou so 1 das 2 multiplicacoes (V e U): o custo real e ~4*d*r",
+      "router_decision_counted_matmul_only": 19424,
+      "decode_token_total_counted_ctx48": 272346624,
+      "lm_head": 56623104,
+      "mlp_share_of_token_flops": 0.5847418912745546
+    }
+  }
+}
