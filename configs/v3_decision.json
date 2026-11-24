@@ -1,0 +1,26 @@
+{
+  "frozen_before_final_evaluation": true,
+  "primary_vetor": "A",
+  "selection_rule": "VETOR principal = arquitetura COM vetor-guia de maior macro na DEV (semente 0): A +0,49, C +0,38, B -3,06 p.p. vs FULL",
+  "models": {
+    "FULL": [],
+    "A": ["A_r8_task_g1", "A_r8_task_g1_s1"],
+    "A0": ["A0_r8_task_g1", "A0_r8_task_g1_s1"],
+    "LORA": ["LORA_r1_task_g1_lr1e3", "LORA_r1_task_g1_lr1e3_s1"],
+    "LORA_KD": ["LORA_r1_kd_g1_lr1e3"],
+    "C": ["C_r8_task_g1"],
+    "B": ["B_r8_rep4_task_g1"],
+    "B0": ["B0_r8_rep4_task_g1"],
+    "V02": "GUIDED-T LR32 k=6 (results/v0.2/router_LR32_r2_T.pt), roteador aplicado a todas as posicoes"
+  },
+  "seed_aggregation": "escore por exemplo = media entre sementes; depois bootstrap pareado por tarefa (10.000)",
+  "tasks": "as 10 tarefas aplicaveis (results/v0.3/applicability.json), metade FINAL",
+  "criteria": "PLANO_EXPERIMENTAL_V0.3.md secao 3 (inalterados)",
+  "comparisons": {
+    "Q1": "A - FULL >= +5,0 p.p., IC95 inferior > 0",
+    "Q2": "nenhuma categoria aplicavel com queda >= 2,0 p.p. (A vs FULL)",
+    "Q3": "A - melhor controle sem guia entre {A0, LORA, LORA_KD} > 0, IC95 inferior > 0",
+    "S1": "A - A0 > 0 e A - LORA > 0, ambos com IC95 inferior > 0",
+    "P1-P4": "scripts/v3_05_perf.py (throughput >= 98%, TTFT <= +5%, memoria <= +5%) e teste de zero sincronizacoes"
+  }
+}

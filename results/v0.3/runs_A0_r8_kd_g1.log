@@ -1,0 +1,10 @@
+W1123 14:32:47.680000 45815 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 3389.87it/s]
+[transformers] Token indices sequence length is longer than the specified maximum sequence length for this model (11996 > 8192). Running this sequence through the model will result in indexing errors
+[A0_r8_kd_g1] params treinaveis=73728  passos=657  val inicial={'task': 1.8562116512545832, 'distill': 0.9931962975749263}
+[A0_r8_kd_g1] passo 150/657 val task=1.7553 distill=0.9188 (174s)
+[A0_r8_kd_g1] passo 300/657 val task=1.7225 distill=0.8926 (385s)
+[A0_r8_kd_g1] passo 450/657 val task=1.7103 distill=0.8835 (587s)
+[A0_r8_kd_g1] passo 600/657 val task=1.7050 distill=0.8797 (784s)
+[A0_r8_kd_g1] passo 657/657 val task=1.7049 distill=0.8795 (864s)
+[A0_r8_kd_g1] fim. melhor val (task+distill) = 2.5844

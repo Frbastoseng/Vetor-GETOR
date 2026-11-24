@@ -1,0 +1,9 @@
+W1123 11:44:21.372000 74813 torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Loading weights:   0%|          | 0/272 [00:00<?, ?it/s]Loading weights: 100%|██████████| 272/272 [00:00<00:00, 9177.76it/s]
+[LORA_r1_kd] params treinaveis=97920  passos=657  val inicial={'task': 1.8562116512545832, 'distill': 0.9931962975749263}
+[LORA_r1_kd] passo 150/657 val task=2.0064 distill=1.2124 (185s)
+[LORA_r1_kd] passo 300/657 val task=1.7656 distill=0.9786 (405s)
+[LORA_r1_kd] passo 450/657 val task=1.6141 distill=0.8399 (614s)
+[LORA_r1_kd] passo 600/657 val task=1.5440 distill=0.7755 (817s)
+[LORA_r1_kd] passo 657/657 val task=1.5409 distill=0.7724 (903s)
+[LORA_r1_kd] fim. melhor val (task+distill) = 2.3134

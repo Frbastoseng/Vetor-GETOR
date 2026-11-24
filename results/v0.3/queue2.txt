@@ -1,0 +1,6 @@
+A0_r8_task_g1 | --arch A0 --layers spaced8 --rank 8 --alpha 0 --gamma 1 --lr 5e-3
+LORA_r1_task_lr1e3 | --arch LORA --rank 1 --alpha 0 --lr 1e-3
+LORA_r1_task_g1_lr1e3 | --arch LORA --rank 1 --alpha 0 --gamma 1 --lr 1e-3
+A0_r16_task | --arch A0 --layers spaced8 --rank 16 --alpha 0 --lr 5e-3
+A0_r8_kd_g1 | --arch A0 --layers spaced8 --rank 8 --alpha 1 --gamma 1 --lr 5e-3
+LORA_r1_kd_g1_lr1e3 | --arch LORA --rank 1 --alpha 1 --gamma 1 --lr 1e-3

@@ -1,0 +1,3 @@
+A_r8_task_g1 | --arch A --layers spaced8 --rank 8 --alpha 0 --gamma 1 --lr 5e-3
+B0_r8_rep4_task_g1 | --arch B0 --layers spaced8 --rank 8 --replace 4 --alpha 0 --gamma 1 --lr 5e-3
+B_r8_rep4_task_g1 | --arch B --layers spaced8 --rank 8 --replace 4 --alpha 0 --gamma 1 --lr 5e-3

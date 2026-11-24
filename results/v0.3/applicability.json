@@ -1,0 +1,163 @@
+[
+ {
+  "task": "arc_challenge",
+  "cat": "raciocinio",
+  "full_dev": 0.2903225806451613,
+  "chance": 0.25011318619128464,
+  "applicable": true
+ },
+ {
+  "task": "winogrande",
+  "cat": "raciocinio",
+  "full_dev": 0.5167464114832536,
+  "chance": 0.5,
+  "applicable": false
+ },
+ {
+  "task": "hellaswag",
+  "cat": "raciocinio",
+  "full_dev": 0.426321036889332,
+  "chance": 0.25,
+  "applicable": true
+ },
+ {
+  "task": "piqa",
+  "cat": "raciocinio",
+  "full_dev": 0.6570438799076213,
+  "chance": 0.5,
+  "applicable": true
+ },
+ {
+  "task": "arc_easy",
+  "cat": "conhecimento",
+  "full_dev": 0.5111876075731497,
+  "chance": 0.2501004016064257,
+  "applicable": true
+ },
+ {
+  "task": "openbookqa",
+  "cat": "conhecimento",
+  "full_dev": 0.35294117647058826,
+  "chance": 0.25,
+  "applicable": true
+ },
+ {
+  "task": "sciq",
+  "cat": "conhecimento",
+  "full_dev": 0.7725409836065574,
+  "chance": 0.25,
+  "applicable": true
+ },
+ {
+  "task": "boolq",
+  "cat": "interpretacao",
+  "full_dev": 0.43162393162393164,
+  "chance": 0.5,
+  "applicable": false
+ },
+ {
+  "task": "belebele_eng_Latn",
+  "cat": "interpretacao",
+  "full_dev": 0.2242562929061785,
+  "chance": 0.25,
+  "applicable": false
+ },
+ {
+  "task": "truthfulqa_mc1",
+  "cat": "veracidade",
+  "full_dev": 0.2457002457002457,
+  "chance": 0.2253152798607344,
+  "applicable": false
+ },
+ {
+  "task": "truthfulqa_mc2",
+  "cat": "veracidade",
+  "full_dev": 0.4254628866726742,
+  "chance": 0.45833095427607623,
+  "applicable": false
+ },
+ {
+  "task": "arithmetic_2da",
+  "cat": "matematica",
+  "full_dev": 0.006066734074823054,
+  "chance": 0.0,
+  "applicable": false
+ },
+ {
+  "task": "arithmetic_3da",
+  "cat": "matematica",
+  "full_dev": 0.0,
+  "chance": 0.0,
+  "applicable": false
+ },
+ {
+  "task": "arithmetic_2dm",
+  "cat": "matematica",
+  "full_dev": 0.040526849037487336,
+  "chance": 0.0,
+  "applicable": true
+ },
+ {
+  "task": "gsm8k",
+  "cat": "matematica",
+  "full_dev": 0.014947683109118086,
+  "chance": 0.0,
+  "applicable": false
+ },
+ {
+  "task": "ifeval",
+  "cat": "instrucoes",
+  "full_dev": 0.2302158273381295,
+  "chance": 0.0,
+  "applicable": true
+ },
+ {
+  "task": "mbpp",
+  "cat": "programacao",
+  "full_dev": 0.05241935483870968,
+  "chance": 0.0,
+  "applicable": true
+ },
+ {
+  "task": "humaneval",
+  "cat": "programacao",
+  "full_dev": 0.0,
+  "chance": 0.0,
+  "applicable": false
+ },
+ {
+  "task": "arc_pt",
+  "cat": "portugues",
+  "full_dev": 0.25432525951557095,
+  "chance": 0.24997116493656285,
+  "applicable": false
+ },
+ {
+  "task": "hellaswag_pt",
+  "cat": "portugues",
+  "full_dev": 0.2927204750384869,
+  "chance": 0.25,
+  "applicable": true
+ },
+ {
+  "task": "belebele_por_Latn",
+  "cat": "portugues",
+  "full_dev": 0.23931623931623933,
+  "chance": 0.25,
+  "applicable": false
+ },
+ {
+  "task": "global_piqa_parallel_cloze_por_latn_braz",
+  "cat": "portugues",
+  "full_dev": 0.2765957446808511,
+  "chance": 0.25,
+  "applicable": false
+ },
+ {
+  "task": "assin2_rte",
+  "cat": "portugues",
+  "full_dev": 0.42826541022834774,
+  "chance": 0.5,
+  "applicable": false
+ }
+]
